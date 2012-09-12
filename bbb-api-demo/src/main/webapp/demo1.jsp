@@ -30,7 +30,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Join Demo Meeting</title>
+	<title>Demonstra&ccedil;&otilde;o de Confer&ecirc;ncia</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@ if (request.getParameterMap().isEmpty()) {
 	%> 
 <%@ include file="demo_header.jsp"%>
 
-<h2>Join Demo Meeting</h2>
+<h2>Entrar na Demonstracao de Conferencia</h2>
 
 
 <FORM NAME="form1" METHOD="GET"> 
@@ -55,7 +55,7 @@ if (request.getParameterMap().isEmpty()) {
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Full Name:</td>
+				Nome completo:</td>
 			<td style="width: 5px; ">
 				&nbsp;</td>
 			<td style="text-align: left ">
@@ -107,9 +107,6 @@ Error: getJoinURL() failed
 	}
 } 
 %>
-
-
-<%@ include file="demo_footer.jsp"%>
 
 </body>
 </html>

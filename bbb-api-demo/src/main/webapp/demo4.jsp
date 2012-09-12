@@ -95,8 +95,6 @@ Unable to end meeting: <%=meetingID%>
 
 <% 		}
 	}%>
-	
- <%@ include file="demo_footer.jsp"%>
 </body>
 </html>
 

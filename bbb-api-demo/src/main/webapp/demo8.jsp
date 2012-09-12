@@ -95,8 +95,5 @@
 				}
 }
 %>
-
-<%@ include file="demo_footer.jsp"%>
-
 </body>
 </html>

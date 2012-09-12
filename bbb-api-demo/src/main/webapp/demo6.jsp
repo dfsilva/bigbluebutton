@@ -167,7 +167,5 @@ Error: getJoinURL() failed
 <p>
 See: <a href="http://code.google.com/p/bigbluebutton/wiki/MatterhornIntegration">Matterhorn Integration</a>
 
-<%@ include file="demo_footer.jsp"%>
-
 </body>
 </html>
