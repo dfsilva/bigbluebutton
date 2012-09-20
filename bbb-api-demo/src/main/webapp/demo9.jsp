@@ -30,7 +30,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Join a Course</title>
+	<title>Entrar no Curso</title>
 </head>
 <body>
 
@@ -46,7 +46,7 @@ if (request.getParameterMap().isEmpty()) {
 	%> 
 <%@ include file="demo_header.jsp"%>
 
-<h2>Demo #1: Join a Course</h2>
+<h2>Demo #1: Entrar no Curso</h2>
 
 
 <FORM NAME="form1" METHOD="GET"> 
@@ -56,7 +56,7 @@ if (request.getParameterMap().isEmpty()) {
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Full Name:</td>
+				Nome Completo:</td>
 			<td style="width: 5px; ">
 				&nbsp;</td>
 			<td style="text-align: left ">
@@ -70,7 +70,7 @@ if (request.getParameterMap().isEmpty()) {
 			<td>
 				&nbsp;</td>
 			<td>
-				<input type="submit" value="Join" /></td>
+				<input type="submit" value="Entrar" /></td>
 		</tr>	
 	</tbody>
 </table>

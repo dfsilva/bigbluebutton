@@ -1,36 +1,34 @@
 <html> 
- <head><title>Join & Upload Presentation</title></head></p> <p>
+ <head><title>Entrar e fazer Upload da apresentacao</title></head></p> <p>
  <body>
  <%@ include file="bbb_api.jsp"%> 
  <%@ include file="demo_header.jsp"%>
 
-<h2>Join & Upload Presentation</h2> 
+<h2>Entrar e Fazer Upload da apresentacao</h2> 
 	 <form action="demo7.jsp" method="post" enctype="multipart/form-data" name="form1" id="form1">
 			<table cellpadding="5" cellspacing="5" style="width: 400px;">
 				<tbody>
 					<tr>
 						<td>&nbsp;</td>
-						<td style="text-align: right;">Full&nbsp;Name:</td>
+						<td style="text-align: right;">Nome&nbsp;Completo:</td>
 						<td style="width: 5px;">&nbsp;</td>
 						<td style="text-align: left"><input type="text" autofocus required 
 							name="username" />
 						</td>
 					</tr>
-	
 					<tr>
 						<td>&nbsp;</td>
-						<td style="text-align: left">Upload&nbsp;File:</td>
+						<td style="text-align: left">Arquivo para Upload:</td>
 						<td style="width: 5px;">&nbsp;</td>
 						<td style="text-align: left"><input type="file"
 							name="filename" /><!--  <input type="submit" / -->
 						</td>
 					</tr>
-	
 					<tr>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
-						<td><input type="submit" value="Join" />
+						<td><input type="submit" value="Entrar"/>
 						</td>
 					</tr>
 				</tbody>
@@ -96,11 +94,11 @@
 		   e.printStackTrace();
 	    }
 
-		 String welcome = "<br>Welcome to <b>%%CONFNAME%%</b>!<br><br>To understand how BigBlueButton works see our <a href=\"event:http://www.bigbluebutton.org/content/videos\"><u>tutorial videos</u></a>.<br><br>To join the audio bridge click the headset icon (upper-left hand corner). <b>You can mute yourself in the Listeners window.</b>";
-		String welcomeMsg = "The uploaded presentation will appear in moment.<br>" + welcome;
+		 String welcome = "<br>Bem vindo a conferencia <b>%%CONFNAME%%</b>!";
+		 String welcomeMsg = "A apresentacao enviada sera apresentada em instantes.<br>" + welcome;
 
 		
-		String joinURL = getJoinURLXML(uname, "Join and Upload example", welcomeMsg, xml );
+		String joinURL = getJoinURLXML(uname, "Entrar e Enviar Apresentacao", welcomeMsg, xml );
 		if (joinURL.startsWith("http://")) { 
 			%>
 			<script language="javascript" type="text/javascript">

@@ -36,7 +36,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 	<script src="js/grid.locale-en.js" type="text/javascript"></script>
 	<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
 	<script src="js/jquery.xml2json.js" type="text/javascript"></script>
-	<title>Recording Meeting Demo</title>
+	<title>Gravar uma Reuniao de Demonstracao</title>
 	<style type="text/css">
 	 #formcreate{
 		margin-bottom:30px;
@@ -88,30 +88,30 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 		// Assume we want to create a meeting
 		//
 %>
-	<h2>Join a Course (Recorded)</h2>
+	<h2>Entrar no curso (Gravado)</h2>
 
 	<form id="formcreate" name="formcreate" method="get" action=""> 		
 		<div>
 			<label class="labform" for="meetingID">Course:</label>
 			<select name="meetingID" onchange="onChangeMeeting(this.value);">
-				<option value="English 101">English 101</option>
-				<option value="English 102">English 102</option>
-				<option value="English 103">English 103</option>
-				<option value="English 104">English 104</option>
-				<option value="English 105">English 105</option>
-				<option value="English 106">English 106</option>
-				<option value="English 107">English 107</option>
-				<option value="English 108">English 108</option>
-				<option value="English 109">English 109</option>
-				<option value="English 110">English 110</option>
+				<option value="English 101">Ingles 101</option>
+				<option value="English 102">Ingles 102</option>
+				<option value="English 103">Ingles 103</option>
+				<option value="English 104">Ingles 104</option>
+				<option value="English 105">Ingles 105</option>
+				<option value="English 106">Ingles 106</option>
+				<option value="English 107">Ingles 107</option>
+				<option value="English 108">Ingles 108</option>
+				<option value="English 109">Ingles 109</option>
+				<option value="English 110">Ingles 110</option>
 			</select>
 		</div>
 		<div>
-			<label class="labform" id="descript" for="meta_description">Description:</label>
+			<label class="labform" id="descript" for="meta_description">Descricao:</label>
 			<textarea id="meta_description" name="meta_description" cols="50" rows="6" autofocus required></textarea>
 		</div>
 		<div>
-			<label class="labform" for="meta_email">Your Name:</label>
+			<label class="labform" for="meta_email">Seu nome:</label>
 			<input id="meta_email" name="meta_email" type="text" required size="30" />
 		</div>	
 		<div style="clear:both"></div>
@@ -119,16 +119,16 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 		<input type="hidden" name="action" value="create" />
 	</form>
 
-	<h3>Recorded Sessions</h3>
+	<h3>Sessoes Gravadas</h3>
 	<select id="actionscmb" name="actions" onchange="recordedAction(this.value);">
-		<option value="novalue" selected>Actions...</option>
-		<option value="publish">Publish</option>
-		<option value="unpublish">Unpublish</option>
-		<option value="delete">Delete</option>
+		<option value="novalue" selected>Acoes...</option>
+		<option value="publish">Publicar</option>
+		<option value="unpublish">Despublicar</option>
+		<option value="delete">Apagar</option>
 	</select>
 	<table id="recordgrid"></table>
 	<div id="pager"></div> 
-	<p>Note: New recordings will appear in the above list after processing.  Refresh your browser to update the list.</p>
+	<p>Nota: Novas gravacoes podem aparecer na lista apos o processamento.  Atualize o browser para refletir.</p>
 	<script>
 	function onChangeMeeting(meetingID){
 		isRunningMeeting(meetingID);
@@ -278,6 +278,5 @@ Error: getJoinURL() failed
 		}
 	}
 %> 
-
 </body>
 </html>

@@ -30,7 +30,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Join Password</title>
+	<title>Entrar com Senha</title>
 </head>
 <body>
 
@@ -48,14 +48,14 @@ HashMap<String, String> meeting;
 
 // String welcome = "<br>Welcome to %%CONFNAME%%!<br><br>For help see our <a href=\"event:http://www.bigbluebutton.org/content/videos\"><u>tutorial videos</u></a>.<br><br>To join the voice bridge for this meeting:<br>  (1) click the headset icon in the upper-left, or<br>  (2) dial xxx-xxx-xxxx (toll free:1-xxx-xxx-xxxx) and enter conference ID: %%CONFNUM%%.<br><br>";
 
-String welcome = "<br>Welcome to <b>%%CONFNAME%%</b>!<br><br>To understand how BigBlueButton works see our <a href=\"event:http://www.bigbluebutton.org/content/videos\"><u>tutorial videos</u></a>.<br><br>To join the audio bridge click the headset icon (upper-left hand corner). <b>You can mute yourself in the Listeners window.</b>";
+String welcome = "<br>Bem vindo a conferencia <b>%%CONFNAME%%</b>!";
 
 //
 // English courses
 //
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "ENGL-2013: Research Methods in English", meeting );	// The title that will appear in the drop-down menu
+allMeetings.put( "ENGL-2013: Aula de ingles 1", meeting );	// The title that will appear in the drop-down menu
 	meeting.put("welcomeMsg", 	welcome);			// The welcome mesage
 	meeting.put("moderatorPW", 	"prof123");			// The password for moderator
 	meeting.put("viewerPW", 	"student123");			// The password for viewer
@@ -63,7 +63,7 @@ allMeetings.put( "ENGL-2013: Research Methods in English", meeting );	// The tit
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");  // The logout URL (use if you want to return to your pages)
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "ENGL-2213: Drama Production I", meeting );
+allMeetings.put( "ENGL-2213: Aula de ingles 2", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -71,7 +71,7 @@ allMeetings.put( "ENGL-2213: Drama Production I", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "ENGL-2023: Survey of English Literature", meeting );
+allMeetings.put( "ENGL-2023: Aula de ingles 3", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -83,7 +83,7 @@ allMeetings.put( "ENGL-2023: Survey of English Literature", meeting );
 //
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "LAW-1323: Fundamentals of Advocacy ", meeting );
+allMeetings.put( "LAW-1323: Aula de ingles 4", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -91,7 +91,7 @@ allMeetings.put( "LAW-1323: Fundamentals of Advocacy ", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "LAW-2273: Business Organizations", meeting );
+allMeetings.put( "LAW-2273: Aula de ingles 5", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -99,7 +99,7 @@ allMeetings.put( "LAW-2273: Business Organizations", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "LAW-3113: Corporate Finance", meeting );
+allMeetings.put( "LAW-3113: Aula de ingles 6", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"theprof");
 	meeting.put("viewerPW", 	"student123");
@@ -112,7 +112,7 @@ allMeetings.put( "LAW-3113: Corporate Finance", meeting );
 //
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "Virtual Office Hours - Steve Stoyan", meeting );
+allMeetings.put( "Reuniao de escritorio 1", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -120,7 +120,7 @@ allMeetings.put( "Virtual Office Hours - Steve Stoyan", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "Virtual Office Hours - Michael Bailetti", meeting );
+allMeetings.put( "Reuniao de escritorio 2", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -128,7 +128,7 @@ allMeetings.put( "Virtual Office Hours - Michael Bailetti", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "Virtual Office Hours - Tony Weiss", meeting );
+allMeetings.put( "Reuniao de escritorio 3", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -147,7 +147,7 @@ if (request.getParameterMap().isEmpty()) {
 	%> 
 <%@ include file="demo_header.jsp"%>
 
-<h2>Join a Session (password required)</h2>
+<h2>Entrar na sessao (senha requerida)</h2>
 
 
 <FORM NAME="form1" METHOD="GET">
@@ -157,7 +157,7 @@ if (request.getParameterMap().isEmpty()) {
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Full&nbsp;Name:</td>
+				Nome&nbsp;Completo:</td>
 			<td style="width: 5px; ">
 				&nbsp;</td>
 			<td style="text-align: left ">
@@ -170,7 +170,7 @@ if (request.getParameterMap().isEmpty()) {
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Session:</td>
+				Sessao:</td>
 			<td>
 				&nbsp;
 			</td>
@@ -212,12 +212,11 @@ if (request.getParameterMap().isEmpty()) {
 <INPUT TYPE=hidden NAME=action VALUE="create">
 </FORM>
 
-Passwords:  
+Senhas:  
 <ul>
-   <li>prof123 - login as professor (moderator privlidges)</li>
-   <li>student123 - login as student (viewer privlidges)</li>
+   <li>prof123 - Entrar como professor (privilegios de moderador)</li>
+   <li>student123 - Entrar com estudante (privilegios de visualizador)</li>
 </ul>
-
 
 <%
 	} else if (request.getParameter("action").equals("create")) {
@@ -244,7 +243,7 @@ Passwords:
 		if ( ! password.equals(viewerPW) && ! password.equals(moderatorPW) ) {
 %>
 
-Invalid Password, please <a href="javascript:history.go(-1)">try again</a>.
+Invalid Password, please <a href="javascript:history.go(-1)">Tentar novamente</a>.
 
 <%
 			return;

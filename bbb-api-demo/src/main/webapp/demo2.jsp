@@ -30,7 +30,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Join Selected</title>
+<title>Selecionar e Entrar</title>
 </head>
 <body>
 
@@ -45,7 +45,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 
 <%@ include file="demo_header.jsp"%>
 
-<h2>Join Selected</h2>
+<h2>Selecionar e Entrar</h2>
 
 
 <FORM NAME="form1" METHOD="GET">
@@ -55,7 +55,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Full Name:</td>
+				Nome Completo:</td>
 			<td style="width: 5px; ">
 				&nbsp;</td>
 			<td style="text-align: left ">
@@ -66,16 +66,16 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Course:</td>
+				Curso:</td>
 			<td>
 				&nbsp;
 			</td>
 			<td style="text-align: left ">
 			<select name="meetingID">
-				<option value="English 232">English 232</option>
-				<option value="English 300">English 300</option>
-				<option value="English 402">English 402</option>
-				<option value="Demo Meeting">Demo Meeting</option>
+				<option value="English 232">Ingles 232</option>
+				<option value="English 300">Ingles 300</option>
+				<option value="English 402">Ingles 402</option>
+				<option value="Demo Meeting">Demonstracao</option>
 			</select>				
 			</td>
 		</tr>

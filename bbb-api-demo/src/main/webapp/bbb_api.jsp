@@ -581,8 +581,7 @@ public static String getURL(String url) {
 
 	try {
 		URL u = new URL(url);
-		HttpURLConnection httpConnection = (HttpURLConnection) u
-		.openConnection();
+		HttpURLConnection httpConnection = (HttpURLConnection) u.openConnection();
 
 		httpConnection.setUseCaches(false);
 		httpConnection.setDoOutput(true);

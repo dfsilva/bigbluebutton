@@ -32,7 +32,7 @@ Author: Islam El-Ashi <ielashi@gmail.com>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Activity Monitor</title>
+<title>Monitor de Atividade</title>
 <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="js/demo4/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -54,7 +54,7 @@ Author: Islam El-Ashi <ielashi@gmail.com>
 if (request.getParameterMap().isEmpty()) {
 %>
 
-<h2>Activity Monitor</h2>
+<h2>Monitor de Atividade</h2>
 
 <p id="no_meetings"></p>
 
@@ -73,9 +73,9 @@ if (request.getParameterMap().isEmpty()) {
 
 %>
 
-<h2>Activity Monitor</h2>
+<h2>Monitor de Atividade</h2>
 
-<%=meetingID%> has been terminated.
+<%=meetingID%> foi concluida.
 
 <p id="no_meetings"></p>
 
@@ -83,15 +83,12 @@ if (request.getParameterMap().isEmpty()) {
 
 <% } else { %>
 
-<h2>Activity Monitor</h2>
+<h2>Monitor de Atividades</h2>
 
 
-Unable to end meeting: <%=meetingID%>
+Impossivel terminar a reuniao: <%=meetingID%>
 
 <%=result%>
-
-
-
 
 <% 		}
 	}%>

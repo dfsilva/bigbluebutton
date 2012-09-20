@@ -1,10 +1,10 @@
 <html> 
- <head><title>Join & Upload Presentation (URL)</title></head></p> <p>
+ <head><title>Entrar & Enviar Apresentacao (URL)</title></head></p> <p>
  <body>
  <%@ include file="bbb_api.jsp"%>  
 
 <%
-	String welcome = "<br>Welcome to <b>%%CONFNAME%%</b>!<br><br>To understand how BigBlueButton works see our <a href=\"event:http://www.bigbluebutton.org/content/videos\"><u>tutorial videos</u></a>.<br><br>To join the audio bridge click the headset icon (upper-left hand corner). <b>You can mute yourself in the Listeners window.</b>";
+	String welcome = "<br>Bem vindo a <b>%%CONFNAME%%</b>!";
 
         if (request.getParameterMap().isEmpty()) {
 		HashMap<String, String> presentations = new HashMap<String, String>();
@@ -17,13 +17,13 @@
 
 <%@ include file="demo_header.jsp"%>
 
-<h2>Join & Upload Presentation (URL)</h2> 
+<h2>Entrar & Enviar Apresentacao (URL)</h2> 
 		<FORM NAME="form1" METHOD="GET">
 			<table cellpadding="5" cellspacing="5" style="width: 400px;">
 				<tbody>
 					<tr>
 						<td>&nbsp;</td>
-						<td style="text-align: right;">Full Name:</td>
+						<td style="text-align: right;">Nome Completo:</td>
 						<td style="width: 5px;">&nbsp;</td>
 						<td style="text-align: left"><input type="text" autofocus required 
 							name="username" />
@@ -32,7 +32,7 @@
 	
 					<tr>
 						<td>&nbsp;</td>
-						<td style="text-align: right">Preupload:</td>
+						<td style="text-align: right">Preenviar:</td>
 						<td style="width: 5px;">&nbsp;</td>
 						<td><select name=presentationFileName>
                         <%

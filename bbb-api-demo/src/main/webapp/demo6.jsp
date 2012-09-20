@@ -30,7 +30,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Record (Matterhorn)</title>
+	<title>Gravar (Matterhorn)</title>
 	<style type="text/css">
 	 #formcreate{ 
 	 	width:500px; 
@@ -67,56 +67,56 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 		// Assume we want to create a meeting
 		//
 %>
-	<h2>Record (Matterhorn)</h2>
+	<h2>Gravar (Matterhorn)</h2>
 
 	<form id="formcreate" name="formcreate" method="get" action=""> 
 		<fieldset>
-			<legend>Meeting Information</legend>
+			<legend>Informacoes da Reuniao</legend>
 			<ul>
 				<li>
-					<label for="confname">Meeting Name:</label>
+					<label for="confname">Nome da Reuniao:</label>
 					<input id="confname" autofocus required name="confname" type="text" />
 				</li>
 				<li>
-					<label for="username1">Your Name:</label>
+					<label for="username1">Seu nome:</label>
 					<input id="username1" required name="username1" type="text" />	
 				</li>
 			</ul>
 		</fieldset>
 		<fieldset>
-			<legend>Metadata Details</legend>
+			<legend>Detalhes</legend>
 			<ul>
 				<li>
-					<label for="meta_title">Title:</label>
+					<label for="meta_title">Titulo:</label>
 					<input type="text" id="meta_title" name="meta_title" />	
 				</li>
 				<li>
-					<label for="meta_subject">Subject:</label>
+					<label for="meta_subject">Assunto:</label>
 					<input type="text" id="meta_subject" name="meta_subject" />
 				</li>
 				<li>
-					<label id="labdescription" for="meta_description">Description:</label>
+					<label id="labdescription" for="meta_description">Descricao:</label>
 					<textarea id="meta_description" name="meta_description" cols="17" rows="3"></textarea>
 				</li>
 				<li>
-					<label for="meta_creator">Creator:</label>
+					<label for="meta_creator">Criador:</label>
 					<input type="text" id="meta_creator" name="meta_creator" />
 				</li>
 				<li>
-					<label for="meta_contributor">Contributor:</label>
+					<label for="meta_contributor">Contribuidor:</label>
 					<input type="text" id="meta_contributor" name="meta_contributor" />
 				</li>
 				<li>
-					<label for="meta_language">Language:</label>
+					<label for="meta_language">Linguagem:</label>
 					<input type="text" id="meta_language" name="meta_language" />
 				</li>
 				<li>
-					<label for="meta_identifier">Identifier:</label>
+					<label for="meta_identifier">Identificador:</label>
 					<input type="text" id="meta_identifier" name="meta_identifier" />
 				</li>	
 			</ul>
 		</fieldset>
-		<input type="submit" value="Create" >
+		<input type="submit" value="Criar" >
 		<input type="hidden" name="action" value="create" />
 	</form>
 
@@ -163,9 +163,6 @@ Error: getJoinURL() failed
 	}
 } 
 %>
-
-<p>
-See: <a href="http://code.google.com/p/bigbluebutton/wiki/MatterhornIntegration">Matterhorn Integration</a>
 
 </body>
 </html>

@@ -18,29 +18,29 @@
 
 <html> 
 <head>
-<title>Error Page</title>
+<title>Pagina de Erro</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body bgcolor="#FFFFFF">
-<P><A href="<%=response.encodeURL(request.getContextPath()) %>">Home</A></P>
+<P><A href="<%=response.encodeURL(request.getContextPath()) %>">Inicio</A></P>
 <hr>
-<H2>An Error has occured:</H2>
+<H2>Ocorreu um erro:</H2>
 
 <TABLE CELLPADDING="2" CELLSPACING="2" BORDER="1" WIDTH="100%">
     <TR>
-	<TD WIDTH="20%"><B>Status Code</B></TD> 
+	<TD WIDTH="20%"><B>Codigo do Status</B></TD> 
 	<TD WIDTH="80%"><%= statusCode %></TD>
     </TR>
     <TR>
-	<TD WIDTH="20%"><B>Exception Type</B></TD> 
+	<TD WIDTH="20%"><B>Tipo de Excessao</B></TD> 
 	<TD WIDTH="80%"><%= exceptionType %></TD>
     </TR>
     <TR>
-	<TD WIDTH="20%"><B>Message</B></TD> 
+	<TD WIDTH="20%"><B>Mensagem</B></TD> 
 	<TD WIDTH="80%"><%= message %></TD>
     </TR>
     <TR>
-	<TD WIDTH="20%"><B>Exception</B></TD> 
+	<TD WIDTH="20%"><B>Excessao</B></TD> 
 	<TD WIDTH="80%">
 	    <%
 		if( exception != null )
@@ -53,7 +53,7 @@
 	</TD>
     </TR>
     <TR>
-	<TD WIDTH="20%"><B>Root Cause</B></TD> 
+	<TD WIDTH="20%"><B>Causa raiz</B></TD> 
 	<TD>
 	    <%
 		if( (exception != null) && (exception instanceof ServletException) )
@@ -75,8 +75,8 @@
 Header List
 <table border=3>
 <tr>
- <td>Name</td>
- <td>Value</td>
+ <td>Nome</td>
+ <td>Valor</td>
 </tr>
 <%
 String name  = "";
@@ -97,7 +97,7 @@ while(headers.hasMoreElements())
 %>
 </table>
 
-Attribute List
+Lista de atributos
 <!-- "javax.servlet.jsp.jspException" for getting an Exception -->
 <table border=3>
 <%
