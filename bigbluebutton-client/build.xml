@@ -16,7 +16,7 @@
 
 	<!-- Declare module names here -->
 	<property name="BBB_MAIN_TEST" value="BigBlueButtonTest" />
-	<property name="BBB_MAIN" value="BigBlueButton" />
+	<property name="BBB_MAIN" value="Virtools" />
 	<property name="CHAT" value="ChatModule" />
 	<property name="VIEWERS" value="ViewersModule" />
 	<property name="LISTENERS" value="ListenersModule" />
@@ -395,13 +395,13 @@
 
 	<target name="generate-html-wrapper">
 		<html-wrapper
-			title="BigBlueButton"
-			file="BigBlueButton.html"
+			title="Virtools"
+			file="Virtools.html"
 			height="100%"
 			width="100%"
 			bgcolor="grey"
 			application="BBB"
-			swf="BigBlueButton"
+			swf="Virtools"
 			version-major="10"
 			version-minor="3"
 			version-revision="0"
