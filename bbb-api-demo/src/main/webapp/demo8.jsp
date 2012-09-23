@@ -10,9 +10,9 @@
 		HashMap<String, String> presentations = new HashMap<String, String>();
 
 		presentations.put( "Virtools.pptx", "Virtools.pptx" );
-		presentations.put( "presentation1.pdf", "pdfs/presentation1.pdf" );
-		presentations.put( "presentation2.pdf", "pdfs/presentation2.pdf" );
-		presentations.put( "presentation3.pdf", "pdfs/presentation3.pdf" );
+		presentations.put( "apresentacao1.pdf", "pdfs/apresentacao1.pdf" );
+		presentations.put( "apresentacao2.pdf", "pdfs/apresentacao2.pdf" );
+		presentations.put( "apresentacao3.pdf", "pdfs/apresentacao3.pdf" );
 %>
 
 <%@ include file="demo_header.jsp"%>
@@ -53,7 +53,7 @@
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
-						<td><input type="submit" value="Join" />
+						<td><input type="submit" value="Entrar" />
 						</td>
 					</tr>
 				</tbody>
@@ -73,7 +73,7 @@
 	
 	String demoURL = BigBlueButtonURL.replace("bigbluebutton/","demo/");
 	String xml = "<?xml version='1.0' encoding='UTF-8'?> <modules>	<module name='presentation'> <document url='"+demoURL+presentationFileName+"' /> </module></modules>";
-	String welcomeMsg = "The presentation will appear in moment.  To download click <a href=\"event:"+ demoURL+presentationFileName+ "\"><u>" + presentationFileName +"</u></a>.<br>" + welcome;
+	String welcomeMsg = "A apresentacao sera carregada em instantes.  Para fazer o download <a href=\"event:"+ demoURL+presentationFileName+ "\"><u>" + presentationFileName +"</u></a>.<br>" + welcome;
 
 	String meetingID = presentationFileName.replace("pdfs/","").replace(".pdf","").replace(".pptx","");
 	String joinURL = getJoinURL(username, meetingID, "false", welcomeMsg, null, xml );
@@ -88,7 +88,7 @@
 		} else {
 		%>
 
-		Error: getJoinURL() failed
+		Erro: getJoinURL() falhou
 		<p />
 		<%=joinURL %>
 			<% 

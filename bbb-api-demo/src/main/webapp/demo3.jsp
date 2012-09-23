@@ -1,25 +1,4 @@
-<!--
-
-BigBlueButton - http://www.bigbluebutton.org
-
-Copyright (c) 2008-2009 by respective authors (see below). All rights reserved.
-
-BigBlueButton is free software; you can redistribute it and/or modify it under the 
-terms of the GNU Lesser General Public License as published by the Free Software 
-Foundation; either version 3 of the License, or (at your option) any later 
-version. 
-
-BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License along 
-with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
-
-Author: Fred Dixon <ffdixon@bigbluebutton.org>
-
--->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
 	request.setCharacterEncoding("UTF-8"); 
@@ -55,7 +34,7 @@ String welcome = "<br>Bem vindo a conferencia <b>%%CONFNAME%%</b>!";
 //
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "ENGL-2013: Aula de ingles 1", meeting );	// The title that will appear in the drop-down menu
+allMeetings.put("Aula de ingles 1", meeting );	// The title that will appear in the drop-down menu
 	meeting.put("welcomeMsg", 	welcome);			// The welcome mesage
 	meeting.put("moderatorPW", 	"prof123");			// The password for moderator
 	meeting.put("viewerPW", 	"student123");			// The password for viewer
@@ -63,7 +42,7 @@ allMeetings.put( "ENGL-2013: Aula de ingles 1", meeting );	// The title that wil
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");  // The logout URL (use if you want to return to your pages)
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "ENGL-2213: Aula de ingles 2", meeting );
+allMeetings.put("Aula de ingles 2", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -71,7 +50,7 @@ allMeetings.put( "ENGL-2213: Aula de ingles 2", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "ENGL-2023: Aula de ingles 3", meeting );
+allMeetings.put("Aula de ingles 3", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -83,15 +62,16 @@ allMeetings.put( "ENGL-2023: Aula de ingles 3", meeting );
 //
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "LAW-1323: Aula de ingles 4", meeting );
+allMeetings.put("Aula de ingles 4", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
 	meeting.put("voiceBridge", 	"71232");
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
+	
 meeting = new HashMap<String, String>();
-allMeetings.put( "LAW-2273: Aula de ingles 5", meeting );
+allMeetings.put("Aula de ingles 5", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -99,36 +79,37 @@ allMeetings.put( "LAW-2273: Aula de ingles 5", meeting );
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "LAW-3113: Aula de ingles 6", meeting );
+allMeetings.put("Aula de ingles 6", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"theprof");
 	meeting.put("viewerPW", 	"student123");
 	meeting.put("voiceBridge", 	"71642");
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
-
 //
 // Professor's Virtaul Office Hours
 //
 
 meeting = new HashMap<String, String>();
-allMeetings.put( "Reuniao de escritorio 1", meeting );
+allMeetings.put("Reuniao de escritorio 1", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
 	meeting.put("voiceBridge", 	"70001");
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
+	
 meeting = new HashMap<String, String>();
-allMeetings.put( "Reuniao de escritorio 2", meeting );
+allMeetings.put("Reuniao de escritorio 2", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
 	meeting.put("voiceBridge", 	"70002");
 	meeting.put("logoutURL", 	"/demo/demo3.jsp");
 
+	
 meeting = new HashMap<String, String>();
-allMeetings.put( "Reuniao de escritorio 3", meeting );
+allMeetings.put("Reuniao de escritorio 3", meeting );
 	meeting.put("welcomeMsg", 	welcome);
 	meeting.put("moderatorPW", 	"prof123");
 	meeting.put("viewerPW", 	"student123");
@@ -164,8 +145,6 @@ if (request.getParameterMap().isEmpty()) {
 				<input type="text" autofocus required name="username" /></td>
 		</tr>
 		
-	
-		
 		<tr>
 			<td>
 				&nbsp;</td>
@@ -191,7 +170,7 @@ if (request.getParameterMap().isEmpty()) {
 			<td>
 				&nbsp;</td>
 			<td style="text-align: right; ">
-				Password:</td>
+				Senha:</td>
 			<td>
 				&nbsp;</td>
 			<td>
@@ -211,7 +190,6 @@ if (request.getParameterMap().isEmpty()) {
 </table>
 <INPUT TYPE=hidden NAME=action VALUE="create">
 </FORM>
-
 Senhas:  
 <ul>
    <li>prof123 - Entrar como professor (privilegios de moderador)</li>
@@ -260,9 +238,8 @@ Invalid Password, please <a href="javascript:history.go(-1)">Tentar novamente</a
 		if( meeting_ID.startsWith("Error ")) {
 %>
 
-Error: createMeeting() failed
+Erro: createMeeting() falhou
 <p /><%=meeting_ID%> 
-
 
 <%
 			return;

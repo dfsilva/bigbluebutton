@@ -72,10 +72,10 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 			</td>
 			<td style="text-align: left ">
 			<select name="meetingID">
-				<option value="English 232">Ingles 232</option>
-				<option value="English 300">Ingles 300</option>
-				<option value="English 402">Ingles 402</option>
-				<option value="Demo Meeting">Demonstracao</option>
+				<option value="Ingles 232">Ingles 232</option>
+				<option value="Ingles 300">Ingles 300</option>
+				<option value="Ingles 402">Ingles 402</option>
+				<option value="Demonstracao">Demonstracao</option>
 			</select>				
 			</td>
 		</tr>
@@ -121,7 +121,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 	} else {
 %>
 
-Error: getJoinURL() failed
+Error: getJoinURL() falhou
 <p /><%=joinURL%> <%
  	}
  	}

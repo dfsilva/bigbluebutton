@@ -92,18 +92,18 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 
 	<form id="formcreate" name="formcreate" method="get" action=""> 		
 		<div>
-			<label class="labform" for="meetingID">Course:</label>
+			<label class="labform" for="meetingID">Curso:</label>
 			<select name="meetingID" onchange="onChangeMeeting(this.value);">
-				<option value="English 101">Ingles 101</option>
-				<option value="English 102">Ingles 102</option>
-				<option value="English 103">Ingles 103</option>
-				<option value="English 104">Ingles 104</option>
-				<option value="English 105">Ingles 105</option>
-				<option value="English 106">Ingles 106</option>
-				<option value="English 107">Ingles 107</option>
-				<option value="English 108">Ingles 108</option>
-				<option value="English 109">Ingles 109</option>
-				<option value="English 110">Ingles 110</option>
+				<option value="Ingles 101">Ingles 101</option>
+				<option value="Ingles 102">Ingles 102</option>
+				<option value="Ingles 103">Ingles 103</option>
+				<option value="Ingles 104">Ingles 104</option>
+				<option value="Ingles 105">Ingles 105</option>
+				<option value="Ingles 106">Ingles 106</option>
+				<option value="Ingles 107">Ingles 107</option>
+				<option value="Ingles 108">Ingles 108</option>
+				<option value="Ingles 109">Ingles 109</option>
+				<option value="Ingles 110">Ingles 110</option>
 			</select>
 		</div>
 		<div>
@@ -115,7 +115,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 			<input id="meta_email" name="meta_email" type="text" required size="30" />
 		</div>	
 		<div style="clear:both"></div>
-		<input class="submit" type="submit" value="Join" >
+		<input class="submit" type="submit" value="Entrar" >
 		<input type="hidden" name="action" value="create" />
 	</form>
 
@@ -140,7 +140,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 		
 		var s = jQuery("#recordgrid").jqGrid('getGridParam','selarrrow');
 		if(s.length==0){
-			alert("Select at least one row");
+			alert("Selecione pelo menos uma linha");
 			$("#actionscmb").val("novalue");
 			return;
 		}
@@ -152,7 +152,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 				recordid+=",";
 		}
 		if(action=="delete"){
-			var answer = confirm ("Are you sure to delete the selected recordings?");
+			var answer = confirm ("Tem certeza que deseja apagar estas gravacoes?");
 			if (answer)
 				sendRecordingAction(recordid,action);
 			else{
@@ -177,7 +177,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 				$("#recordgrid").trigger("reloadGrid");
 			},
 			error: function() {
-				alert("Failed to connect to API.");
+				alert("Falha ao conectar-se na api.");
 			}
 		});
 	}
@@ -192,7 +192,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 			success: function(xml) {
 				response = $.xml2json(xml);
 				if(response.running=="true"){
-					$("#meta_description").val("An active session exists for "+meetingID+". This session is being recorded.");
+					$("#meta_description").val("Existe uma sessao ativa para "+meetingID+". Esta sessao esta sendo gravada.");
 					$("#meta_description").attr("readonly","readonly");
 					$("#meta_description").attr("disabled","disabled");
 				}else{
@@ -203,22 +203,22 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 				
 			},
 			error: function() {
-				alert("Failed to connect to API.");
+				alert("Falha ao conectar na api.");
 			}
 		});
 	}
-	var meetingID="English 101,English 102,English 103,English 104,English 105,English 106,English 107,English 108,English 109,English 110";
+	var meetingID="Ingles 101,Ingles 102,Ingles 103,Ingles 104,Ingles 105,Ingles 106,Ingles 107,Ingles 108,Ingles 109,Ingles 110";
 	$(document).ready(function(){
-		isRunningMeeting("English 232");
+		isRunningMeeting("Ingles 232");
 		$("#formcreate").validate();
-		$("#meetingID option[value='English 101']").attr("selected","selected");
+		$("#meetingID option[value='Ingles 101']").attr("selected","selected");
 		jQuery("#recordgrid").jqGrid({
 			url: "demo10_helper.jsp?command=getRecords&meetingID="+meetingID,
 			datatype: "xml",
 			height: 150,
 			loadonce: true,
 			sortable: true,
-			colNames:['Id','Course','Description', 'Date Recorded', 'Published', 'Playback', 'Length'],
+			colNames:['Codigo','Curso','Descricao', 'Data da Gravacao', 'Publicado', 'Gravado', 'Tamanho'],
 			colModel:[
 				{name:'id',index:'id', width:50, hidden:true, xmlmap: "recordID"},
 				{name:'course',index:'course', width:150, xmlmap: "name", sortable:true},
@@ -235,15 +235,14 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 				id: "recordID"
 			},
 			pager : '#pager',
-			emptyrecords: "Nothing to display",
+			emptyrecords: "Nada para mostrar",
 			multiselect: true,
-			caption: "Recorded Sessions",
+			caption: "Sessoes gravadas",
 			loadComplete: function(){
 				$("#recordgrid").trigger("reloadGrid");
 			}
 		});
 	});
-	
 	</script>
 <%
 	} else if (request.getParameter("action").equals("create")) {
@@ -263,7 +262,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 		//
 		// This is the URL for to join the meeting as moderator
 		//
-		String welcomeMsg = "<br>Welcome to %%CONFNAME%%!<br><br>For help see our <a href=\"event:http://www.bigbluebutton.org/content/videos\"><u>tutorial videos</u></a>.<br><br>To join the voice bridge for this meeting click the headset icon in the upper-left <b>(you can mute yourself in the Listeners window)</b>.<br><br>This meeting is being recorded (audio + slides + chat).";
+		String welcomeMsg = "Seja bem vindo a %%CONFNAME%%!";
 		String joinURL = getJoinURL(username, meetingID, "true", welcomeMsg, metadata, null);
 		if (joinURL.startsWith("http://")) {
 %>
@@ -273,7 +272,7 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 <%
 		}else{
 %>
-Error: getJoinURL() failed
+Erro: getJoinURL() falhou
 <p /><%=joinURL%> <%
 		}
 	}

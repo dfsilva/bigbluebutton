@@ -1,25 +1,3 @@
-<!--
-
-BigBlueButton - http://www.bigbluebutton.org
-
-Copyright (c) 2008-2009 by respective authors (see below). All rights reserved.
-
-BigBlueButton is free software; you can redistribute it and/or modify it under the 
-terms of the GNU Lesser General Public License as published by the Free Software 
-Foundation; either version 3 of the License, or (at your option) any later 
-version. 
-
-BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License along 
-with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
-
-Author: Fred Dixon <ffdixon@bigbluebutton.org>
-  
--->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
@@ -32,7 +10,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<title>Create Your Own Meeting</title>
+	<title>Criar sua própria reunião</title>
 
 	<script type="text/javascript"
 		src="js/jquery.min.js"></script>
@@ -53,7 +31,7 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 		//
 %>
 <%@ include file="demo_header.jsp"%>
-<h2>Create Your Own Meeting</h2>
+<h2>Criar sua própria reunião</h2>
 
 <p />
 <FORM NAME="form1" METHOD="GET">
@@ -63,13 +41,13 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 	border=3>
 	<tbody>
 		<tr>
-			<td width="50%">Create your own meeting.
+			<td width="50%">Criar sua própria reunião.
 			<p />
 			</td>
-			<td width="50%">Step 1. Enter your name: <input type="text" autofocus required
+			<td width="50%">Passo 1. Entre com seu Nome: <input type="text" autofocus required
 				name="username1" /> <br />
 			<INPUT TYPE=hidden NAME=action VALUE="create"> <br />
-			<input id="submit-button" type="submit" value="Create meeting" /></td>
+			<input id="submit-button" type="submit" value="Criar reunião" /></td>
 		</tr>
 	</tbody>
 </table>
@@ -86,7 +64,7 @@ $(document).ready(function(){
         if ($("input[name='username1']").val() == "") {
         	$("#submit-button").attr('value',"Create meeting" );
         } else {
-       $("#submit-button").attr('value',"Create " +$("input[name='username1']").val()+ "'s meeting" );
+       $("#submit-button").attr('value',"Criar reunião" +$("input[name='username1']").val());
         }
     });
 });
@@ -99,19 +77,19 @@ $(document).ready(function(){
 		//
 
 		String username = request.getParameter("username1");
-		String meetingID = username + "'s meeting";
+		String meetingID = "Reunião "+username;
 
 		//
 		// This is the URL for to join the meeting as moderator
 		//
-		String joinURL = getJoinURL(username, meetingID, "false", "<br>Welcome to %%CONFNAME%%.<br>", null, null);
+		String joinURL = getJoinURL(username, meetingID, "false", "<br>Bem vindo a conferencia %%CONFNAME%%.<br>", null, null);
 
 		String url = BigBlueButtonURL.replace("bigbluebutton/","demo/");
 		String inviteURL = url + "create.jsp?action=invite&meetingID=" + URLEncoder.encode(meetingID, "UTF-8");
 %>
 
 <hr />
-<h2>Meeting Created</h2>
+<h2>Reunião criada</h2>
 <hr />
 
 
@@ -121,35 +99,28 @@ $(document).ready(function(){
 	<tbody>
 		<tr>
 			<td width="50%">
-			<center><strong> <%=username%>'s meeting</strong> has been
-			created.</center>
+			<center><strong> Reuniao <%=username%>'s </strong> foi criada.</center>
 			</td>
 
 			<td width="50%">
 			<p>&nbsp;</p>
 
-			Step 2. Invite others using the following <a href="<%=inviteURL%>">link</a> (shown below):
+			Passo 2. Envie a outros usuarios usando o <a href="<%=inviteURL%>">link</a> (abaixo):
 			<form name="form2" method="POST">
 				<textarea cols="62" rows="5" name="myname" style="overflow: hidden">
 					<%=inviteURL%>
 				</textarea>
 			</form>
 			<p>&nbsp;
-			<p />Step 3. Click the following link to start your meeting:
+			<p />Passo 3. Click no link a seguir para iniciar a reunião:
 			<p>&nbsp;</p>
-			<center><a href="<%=joinURL%>">Start Meeting</a></center>
+			<center><a href="<%=joinURL%>">Iniciar Reunião</a></center>
 			<p>&nbsp;</p>
 
 			</td>
 		</tr>
 	</tbody>
 </table>
-
-
-
-
-
-
 
 <%
 	} else if (request.getParameter("action").equals("enter")) {
@@ -213,11 +184,10 @@ function mycallback() {
 		<tr>
 			<td width="50%">
 
-			<p>Hi <%=username%>,</p>
-			<p>Now waiting for the moderator to start <strong><%=meetingID%></strong>.</p>
+			<p>Ola <%=username%>,</p>
+			<p>Aguardando moderador para iniciar a reunião <strong><%=meetingID%></strong>.</p>
 			<br />
-			<p>(Your browser will automatically refresh and join the meeting
-			when it starts.)</p>
+			<p>(Seu browser será automaticamente recarregado quando for iniciado)</p>
 			</td>
 			<td width="50%"><img src="polling.gif"></img></td>
 		</tr>
@@ -236,7 +206,7 @@ function mycallback() {
 %>
 
 <hr />
-<h2>Invite</h2>
+<h2>Convidar</h2>
 <hr />
 
 <FORM NAME="form3" METHOD="GET">
@@ -248,11 +218,11 @@ function mycallback() {
 		<tr>
 			<td width="50%">
 
-			<p />You have been invited to join<br />
+			<p />Você foi convidado para se juntar<br />
 			<strong><%=meetingID%></strong>.
 			</td>
 
-			<td width="50%">Enter your name: <input type="text"
+			<td width="50%">Entre com seu nome: <input type="text"
 				name="username" /> <br />
 			<INPUT TYPE=hidden NAME=meetingID VALUE="<%=meetingID%>"> <INPUT
 				TYPE=hidden NAME=action VALUE="enter"> <br />
@@ -262,9 +232,6 @@ function mycallback() {
 </table>
 
 </FORM>
-
-
-
 
 <%
 	} else if (request.getParameter("action").equals("join")) {
@@ -286,7 +253,7 @@ function mycallback() {
 	} else { 
 %>
 
-Error: getJoinURL() failed
+Erro: getJoinURL() falhou
 <p /><%=joinURL%> 
 
 <%
