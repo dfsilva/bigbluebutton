@@ -9,7 +9,7 @@
         if (request.getParameterMap().isEmpty()) {
 		HashMap<String, String> presentations = new HashMap<String, String>();
 
-		presentations.put( "BigBlueButton.pptx", "BigBlueButton.pptx" );
+		presentations.put( "Virtools.pptx", "Virtools.pptx" );
 		presentations.put( "presentation1.pdf", "pdfs/presentation1.pdf" );
 		presentations.put( "presentation2.pdf", "pdfs/presentation2.pdf" );
 		presentations.put( "presentation3.pdf", "pdfs/presentation3.pdf" );
