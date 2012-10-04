@@ -1,25 +1,3 @@
-<!--
-
-BigBlueButton - http://www.bigbluebutton.org
-
-Copyright (c) 2008-2009 by respective authors (see below). All rights reserved.
-
-BigBlueButton is free software; you can redistribute it and/or modify it under the 
-terms of the GNU Lesser General Public License as published by the Free Software 
-Foundation; either version 3 of the License, or (at your option) any later 
-version. 
-
-BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License along 
-with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
-
-Author: Islam El-Ashi <ielashi@gmail.com>
-
--->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
@@ -29,38 +7,64 @@ Author: Islam El-Ashi <ielashi@gmail.com>
 
 <%@page import="org.w3c.dom.*"%>
 
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Monitor de Atividade</title>
-<link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="js/demo4/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/demo4.js"></script>
-<script type="text/javascript" src="js/md5.js"></script>
-<script type="text/javascript" src="js/jquery.xml2json.js"></script>
-<style type="text/css">
-.hiddenDiv {display:none;}
-.hor-minimalist-b{font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size:12px;background:#fff;width:480px;border-collapse:collapse;text-align:left;margin:20px;}.hor-minimalist-b th{font-size:14px;font-weight:normal;color:#039;border-bottom:2px solid #6678b1;padding:10px 8px;}.hor-minimalist-b td{border-bottom:1px solid #ccc;color:#669;padding:6px 8px;width:100px;}.hor-minimalist-b tbody tr:hover td{color:#009;}</style>
-</head>
+    <meta charset="utf-8">
+    <title>Monitor de Atividade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/ui.jqgrid.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/redmond/jquery-ui-redmond.css" />
+	
+    <style type="text/css">
+	.hiddenDiv {display:none;}
+	.hor-minimalist-b{font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size:12px;background:#fff;width:480px;border-collapse:collapse;text-align:left;margin:20px;}.hor-minimalist-b th{font-size:14px;font-weight:normal;color:#039;border-bottom:2px solid #6678b1;padding:10px 8px;}.hor-minimalist-b td{border-bottom:1px solid #ccc;color:#669;padding:6px 8px;width:100px;}.hor-minimalist-b tbody tr:hover td{color:#009;}</style>
+    
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/docs.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/demo4.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/md5.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.xml2json.js"></script>
+  </head>
 <body>
-
 <%@ include file="bbb_api.jsp"%>
-
 <%@ include file="demo_header.jsp"%>
-
-
 <%
 if (request.getParameterMap().isEmpty()) {
 %>
-
-<h2>Monitor de Atividade</h2>
-
+<div class="container-fluid">
+	<div class="hero-unit">
+		<h2>Monitor de Atividade</h2>
+	</div>
 <p id="no_meetings"></p>
 
 <div id="meetings"></div>
-
-
 <% 
 } else if (request.getParameter("action").equals("end")) {
 	 
@@ -72,8 +76,9 @@ if (request.getParameterMap().isEmpty()) {
 	if ( result.equals("true") ){
 
 %>
-
-<h2>Monitor de Atividade</h2>
+	<div class="hero-unit">
+		<h2>Monitor de Atividade</h2>
+	</div>
 
 <%=meetingID%> foi concluida.
 
@@ -83,15 +88,32 @@ if (request.getParameterMap().isEmpty()) {
 
 <% } else { %>
 
-<h2>Monitor de Atividades</h2>
-
-
-Impossivel terminar a reuniao: <%=meetingID%>
+	<div class="hero-unit">
+		<h2>Monitor de Atividade</h2>
+	</div>
+	
+	Impossivel terminar a reuniao: <%=meetingID%>
 
 <%=result%>
 
 <% 		}
 	}%>
+	
+</div>
+<%@ include file="demo_footer.jsp"%>
+
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-transition.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-alert.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-modal.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-dropdown.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-scrollspy.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-tab.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-tooltip.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-popover.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-button.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-collapse.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-carousel.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap-typeahead.js"></script>
 </body>
 </html>
 

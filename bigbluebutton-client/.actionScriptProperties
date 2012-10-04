@@ -16,6 +16,9 @@
   <applications>
     <application path="BigBlueButton.mxml"/>
     <application path="Virtools.mxml"/>
+    <application path="BigBlueButtonTest.mxml"/>
+    <application path="BigBlueButtonUnitTests.mxml"/>
+    <application path="DeskshareStandalone.mxml"/>
   </applications>
   <modules>
     <module application="src/BigBlueButton.mxml" destPath="ChatModule.swf" optimize="true" sourcePath="src/ChatModule.mxml"/>

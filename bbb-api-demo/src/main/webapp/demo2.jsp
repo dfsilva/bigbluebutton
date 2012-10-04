@@ -1,24 +1,3 @@
-<!--
-
-BigBlueButton - http://www.bigbluebutton.org
-
-Copyright (c) 2008-2009 by respective authors (see below). All rights reserved.
-
-BigBlueButton is free software; you can redistribute it and/or modify it under the 
-terms of the GNU Lesser General Public License as published by the Free Software 
-Foundation; either version 3 of the License, or (at your option) any later 
-version. 
-
-BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License along 
-with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
-
-Author: Fred Dixon <ffdixon@bigbluebutton.org>
-
--->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
@@ -26,73 +5,69 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 	response.setCharacterEncoding("UTF-8"); 
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Selecionar e Entrar</title>
-</head>
+ <head>
+    <meta charset="utf-8">
+    <title>Selecionar e Entrar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/docs.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+  </head>
 <body>
 
 <%@ include file="bbb_api.jsp"%>
 
 <%
 	if (request.getParameterMap().isEmpty()) {
-		//
-		// Assume we want to create a meeting
-		//
 %>
 
 <%@ include file="demo_header.jsp"%>
 
-<h2>Selecionar e Entrar</h2>
 
+<div class="container-fluid">
 
-<FORM NAME="form1" METHOD="GET">
-<table cellpadding="5" cellspacing="5" style="width: 400px; ">
-	<tbody>
-		<tr>
-			<td>
-				&nbsp;</td>
-			<td style="text-align: right; ">
-				Nome Completo:</td>
-			<td style="width: 5px; ">
-				&nbsp;</td>
-			<td style="text-align: left ">
-				<input type="text" autofocus required name="username" /></td>
-		</tr>
-		
-		<tr>
-			<td>
-				&nbsp;</td>
-			<td style="text-align: right; ">
-				Curso:</td>
-			<td>
-				&nbsp;
-			</td>
-			<td style="text-align: left ">
-			<select name="meetingID">
-				<option value="Ingles 232">Ingles 232</option>
-				<option value="Ingles 300">Ingles 300</option>
-				<option value="Ingles 402">Ingles 402</option>
-				<option value="Demonstracao">Demonstracao</option>
-			</select>				
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-			<td>
-				&nbsp;</td>
-			<td>
-				&nbsp;</td>
-			<td>
-				<input type="submit" value="Join" /></td>
-		</tr>	
-	</tbody>
-</table>
-<INPUT TYPE=hidden NAME=action VALUE="create">
-</FORM>
+	<div class="hero-unit">
+		<h2>Selecionar e Entrar</h2>
+	</div>
+
+    <form name="form1" class="well" method="get">
+         <INPUT TYPE=hidden NAME=action VALUE="create">
+	     <label>Nome</label>
+	     <input type="text" autofocus required name="username" />
+         <label>Curso</label>
+         <select name="meetingID">
+			<option value="Ingles 232">Ingles 232</option>
+			<option value="Ingles 300">Ingles 300</option>
+			<option value="Ingles 402">Ingles 402</option>
+			<option value="Demonstracao">Demonstracao</option>
+		</select>
+        <div class="form-actions">
+        	<button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+	 </form>
 
 <%
 	} else if (request.getParameter("action").equals("create")) {
@@ -113,6 +88,8 @@ Author: Fred Dixon <ffdixon@bigbluebutton.org>
 		if (joinURL.startsWith("http://")) {
 %>
 
+</div>
+
 <script language="javascript" type="text/javascript">
   window.location.href="<%=joinURL%>";
 </script>
@@ -126,6 +103,23 @@ Error: getJoinURL() falhou
  	}
  	}
  %>
+ <hr>
+
+<%@ include file="demo_footer.jsp"%>
+
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-transition.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-alert.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-modal.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tab.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tooltip.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-popover.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-button.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-collapse.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-carousel.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-typeahead.js"></script>
 </body>
 </html>
 
