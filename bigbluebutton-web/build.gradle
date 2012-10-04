@@ -1,12 +1,13 @@
-usePlugin 'java'
-usePlugin 'eclipse'
+apply plugin: 'java'
+apply plugin: 'eclipse'
 
+/**
 task resolveDeps(dependsOn: configurations.default.buildArtifacts, type: Copy) {
     into('lib')
     from configurations.default
     from configurations.default.allArtifacts*.file
 }
-
+**/
 repositories {
     add(new org.apache.ivy.plugins.resolver.ChainResolver()) {
         name = 'remote'

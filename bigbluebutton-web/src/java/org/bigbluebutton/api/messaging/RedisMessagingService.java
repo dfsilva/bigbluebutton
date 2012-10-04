@@ -15,6 +15,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPubSub;
 
 public class RedisMessagingService implements MessagingService {
+	
 	private static Logger log = LoggerFactory.getLogger(RedisMessagingService.class);
 	
 	private JedisPool redisPool;
@@ -184,6 +185,13 @@ public class RedisMessagingService implements MessagingService {
 		public void onUnsubscribe(String channel, int subscribedChannels) {
 			// Not used.
 		}		
+	}
+
+	@Override
+	public void recordMeetingMetadata(String meetingId,
+			Map<String, String> metadata) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

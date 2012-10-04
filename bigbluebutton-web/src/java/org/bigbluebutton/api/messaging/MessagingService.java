@@ -10,4 +10,5 @@ public interface MessagingService {
 	public void send(String channel, String message);
 	public void addListener(MessageListener listener);
 	public void removeListener(MessageListener listener);
+	void recordMeetingMetadata(String meetingId, Map<String, String> metadata);
 }
