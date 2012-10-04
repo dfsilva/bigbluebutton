@@ -30,8 +30,8 @@ package org.bigbluebutton.main.model
 		public function BigBlueButtonPreloader()
 		{
 			super();
-			downloadingLabel = "Downloading BigBlueButton main...";
-			initializingLabel = "BigBlueButton starting...";
+			downloadingLabel = "Carregando...";
+			initializingLabel = "Inicializando...";
 			MINIMUM_DISPLAY_TIME = 0;
 		}
 		

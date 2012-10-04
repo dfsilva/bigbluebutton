@@ -1,23 +1,3 @@
-/*
-	BigBlueButton - http://www.bigbluebutton.org
-	
-	Copyright (c) 2008-2009 by respective authors (see below). All rights reserved.
-	
-	BigBlueButton is free software; you can redistribute it and/or modify it under the 
-	terms of the GNU Lesser General Public License as published by the Free Software 
-	Foundation; either version 3 of the License, or (at your option) any later 
-	version. 
-	
-	BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
-	WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-	PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-	
-	You should have received a copy of the GNU Lesser General Public License along 
-	with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
-	
-	Author: Islam El-Ashi <ielashi@gmail.com>
-*/
-
 var meetings;	// will hold the meetings data
 
 $(document).ready(function(){
@@ -48,7 +28,7 @@ function createMeetings() {
 	
 	// if there are no meetings then display a message to the user.
 	if (nOfMeetings == 0) { 
-		$("#no_meetings").text("No meetings currently running.");
+		$("#no_meetings").text("Nenhuma reunião sendo executada no momento.");
 		$("#meetings").text('');
 	}
 	else 
@@ -83,7 +63,7 @@ function updateMeetingInfo() {
 	$.ajax({
     	type: "GET",
 		url: 'demo4_helper.jsp?getxml=true',
-		dataType: "text/xml",
+		//dataType: "text/xml",
 		cache: false,
 		success: function(xml) {
 			meetings = $.xml2json(xml);
@@ -91,7 +71,7 @@ function updateMeetingInfo() {
 			createMeetings();
 		},
 		error: function() {
-			$("#no_meetings").text("Failed to connect to API.");
+			$("#no_meetings").text("Falha ao conectar na api.");
 			$("#meetings").text("");
 		}
 	});
@@ -106,10 +86,10 @@ function createMeetingTable(meeting) {
 	var form = '<th><FORM NAME="form1" METHOD="GET"><input type="hidden" name="meetingID" value="' + meeting.meetingID + '"/>';
 	form += '<input type="hidden" name="moderatorPW" value="' + meeting.moderatorPW + '"/>';
 	form += '<INPUT TYPE=hidden NAME=action VALUE="end">';
-	form += '<input type="submit" value="End"/></FORM>';
+	form += '<input type="submit" value="Finalizar"/></FORM>';
 	form += '</th>';
 	
-	var tableContent = '<table name="' + meeting.meetingID + '" class="hor-minimalist-b" cellspacing="0" summary="The current participants in a meeting"><caption>' + meeting.meetingID + '<caption><tr><th scope="col" abbr="Participants">Participants</th><th scope="col" abbr="Name">Name</th><th scope="col" abbr="Role">Role</th>';
+	var tableContent = '<table name="' + meeting.meetingID + '" class="hor-minimalist-b" cellspacing="0" summary="Os participantes atuais da reuniao"><caption>' + meeting.meetingID + '<caption><tr><th scope="col" abbr="Participants">Participantes</th><th scope="col" abbr="Name">Nome</th><th scope="col" abbr="Role">Grupo</th>';
 	
 	//uncomment below to add the ability to end meetings in the activity monitor
 	//tableContent += form;

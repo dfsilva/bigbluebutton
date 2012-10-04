@@ -1,50 +1,68 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% 
+	request.setCharacterEncoding("UTF-8"); 
+	response.setCharacterEncoding("UTF-8"); 
+%>
+<!DOCTYPE html>
 <html> 
- <head><title>Entrar e fazer Upload da apresentacao</title></head></p> <p>
+ <head>
+    <meta charset="utf-8">
+    <title>Entrar e fazer Upload da apresentacao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/docs.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+  </head>
+ 
  <body>
  <%@ include file="bbb_api.jsp"%> 
  <%@ include file="demo_header.jsp"%>
+ 
+ 	<div class="container-fluid">
 
-<h2>Entrar e Fazer Upload da apresentacao</h2> 
-	 <form action="demo7.jsp" method="post" enctype="multipart/form-data" name="form1" id="form1">
-			<table cellpadding="5" cellspacing="5" style="width: 400px;">
-				<tbody>
-					<tr>
-						<td>&nbsp;</td>
-						<td style="text-align: right;">Nome&nbsp;Completo:</td>
-						<td style="width: 5px;">&nbsp;</td>
-						<td style="text-align: left"><input type="text" autofocus required 
-							name="username" />
-						</td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td style="text-align: left">Arquivo para Upload:</td>
-						<td style="width: 5px;">&nbsp;</td>
-						<td style="text-align: left"><input type="file"
-							name="filename" /><!--  <input type="submit" / -->
-						</td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td><input type="submit" value="Entrar"/>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<INPUT TYPE=hidden NAME=action VALUE="create">
+	<div class="hero-unit">
+		<h2>Entrar e Fazer Upload da apresentacao</h2>
+	</div>
+	
+	 <form action="demo7.jsp" class="well" method="post" enctype="multipart/form-data" name="form1" id="form1">
+	 		<INPUT TYPE=hidden NAME=action VALUE="create">
+	 		<label>Nome</label>
+			<input type="text" autofocus required name="username" />
+			<label>Arquivo</label>
+			<input type="file" name="filename" />
+			<div class="form-actions">
+		       	<input type="submit" value="Entrar" class="btn btn-primary"/>
+		    </div>
 	</form>
- </body>
-</html>
-  
+	</div>
+	
     <%@ page import="java.util.List" %>
 	<%@ page import="java.util.Iterator" %>
 	<%@ page import="java.io.File" %>
 	<%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
 	<%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
 	<%@ page import="org.apache.commons.fileupload.*"%>
-	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 	<%@page import="sun.security.provider.SHA"%>
 	<%@page import="org.apache.commons.codec.binary.Base64"%>
 	<%@page import="java.security.MessageDigest"%>
@@ -118,6 +136,22 @@
    }
    }
    %>
+   
+   	<%@ include file="demo_footer.jsp"%>
+
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-transition.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-alert.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-modal.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tab.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tooltip.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-popover.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-button.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-collapse.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-carousel.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-typeahead.js"></script>
 </body>
 </html>
 

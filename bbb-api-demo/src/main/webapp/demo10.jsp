@@ -1,98 +1,73 @@
-<!--
-XX
-BigBlueButton - http://www.bigbluebutton.org
-
-Copyright (c) 2008-2009 by respective authors (see below). All rights reserved.
-
-BigBlueButton is free software; you can redistribute it and/or modify it under the 
-terms of the GNU Lesser General Public License as published by the Free Software 
-Foundation; either version 3 of the License, or (at your option) any later 
-version. 
-
-BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License along 
-with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
-
--->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
 	request.setCharacterEncoding("UTF-8"); 
 	response.setCharacterEncoding("UTF-8"); 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/ui.jqgrid.css" />
-	<link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-redmond.css" />
-	<script type="text/javascript" src="js/jquery-ui.js"></script>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-	<script src="js/grid.locale-en.js" type="text/javascript"></script>
-	<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
-	<script src="js/jquery.xml2json.js" type="text/javascript"></script>
-	<title>Gravar uma Reuniao de Demonstracao</title>
-	<style type="text/css">
-	 #formcreate{
-		margin-bottom:30px;
-	 }
-	 #formcreate label.labform{
-	 	display:block;
-	 	float:left;
-	 	width:100px;
-	 	text-align:right;
-		margin-right:5px;
-	 }
-	 #formcreate div{
-		margin-bottom:5px;
-		clear:both;
-	 }
-	 #formcreate .submit{
-		margin-left:100px;
-		margin-top:15px;
-	 }
-	 #descript{
-	 	vertical-align:top;
-	 }
-	 #meta_description , #username1{
-		float:left;
-	 }
+    <meta charset="utf-8">
+    <title>Gravar uma Reuniao de Demonstracao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/docs.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/ui.jqgrid.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/redmond/jquery-ui-redmond.css" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <style type="text/css">
 	 .ui-jqgrid{
 		font-size:0.7em
 	}
-	label.error{
-		float: none; 
-		color: red; 
-		padding-left: .5em; 
-		vertical-align: top;
-		width:200px;
-		text-align:left;
-	}
 	</style>
-</head>
-<body>
 
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.validate.min.js"></script>
+	<script src="<%=request.getContextPath()%>/js/grid.locale-en.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/js/jquery.xml2json.js" type="text/javascript"></script>
+  </head>
+<body>
 <%@ include file="bbb_api.jsp"%>
 <%@ page import="java.util.regex.*"%>
-
 <%@ include file="demo_header.jsp"%>
-
 <%
 	if (request.getParameterMap().isEmpty()) {
-		//
-		// Assume we want to create a meeting
-		//
 %>
-	<h2>Entrar no curso (Gravado)</h2>
+	<div class="container-fluid">
 
-	<form id="formcreate" name="formcreate" method="get" action=""> 		
-		<div>
-			<label class="labform" for="meetingID">Curso:</label>
+	<div class="hero-unit">
+		<h2>Entrar no curso (Gravado)</h2>
+	</div>
+
+	<form id="formcreate" name="formcreate" class="well" method="get" action=""> 
+			<input type="hidden" name="action" value="create" />
+			
+			<label class="labform" for="meetingID">Curso</label>
 			<select name="meetingID" onchange="onChangeMeeting(this.value);">
 				<option value="Ingles 101">Ingles 101</option>
 				<option value="Ingles 102">Ingles 102</option>
@@ -105,18 +80,16 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 				<option value="Ingles 109">Ingles 109</option>
 				<option value="Ingles 110">Ingles 110</option>
 			</select>
-		</div>
-		<div>
+			
 			<label class="labform" id="descript" for="meta_description">Descricao:</label>
-			<textarea id="meta_description" name="meta_description" cols="50" rows="6" autofocus required></textarea>
-		</div>
-		<div>
-			<label class="labform" for="meta_email">Seu nome:</label>
+			<textarea id="meta_description" name="meta_description" class="span6" autofocus required></textarea>
+			
+			<label class="labform" for="meta_email">Nome</label>
 			<input id="meta_email" name="meta_email" type="text" required size="30" />
+
+		<div class="form-actions">
+		   <input type="submit" value="Entrar" class="btn btn-primary"/>
 		</div>	
-		<div style="clear:both"></div>
-		<input class="submit" type="submit" value="Entrar" >
-		<input type="hidden" name="action" value="create" />
 	</form>
 
 	<h3>Sessoes Gravadas</h3>
@@ -128,8 +101,10 @@ with BigBlueButton; if not, If not, see <http://www.gnu.org/licenses/>.
 	</select>
 	<table id="recordgrid"></table>
 	<div id="pager"></div> 
-	<p>Nota: Novas gravacoes podem aparecer na lista apos o processamento.  Atualize o browser para refletir.</p>
-	<script>
+
+<p>Nota: Novas gravacoes podem aparecer na lista apos o processamento.  Atualize o browser para refletir.</p>
+	
+<script>
 	function onChangeMeeting(meetingID){
 		isRunningMeeting(meetingID);
 	}
@@ -277,5 +252,21 @@ Erro: getJoinURL() falhou
 		}
 	}
 %> 
+
+</div>
+
+<%@ include file="demo_footer.jsp"%>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-transition.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-alert.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-modal.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tab.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tooltip.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-popover.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-button.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-collapse.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-carousel.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-typeahead.js"></script>
 </body>
 </html>

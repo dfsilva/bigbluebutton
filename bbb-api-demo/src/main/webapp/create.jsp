@@ -5,7 +5,7 @@
 	response.setCharacterEncoding("UTF-8"); 
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,51 +14,61 @@
 
 	<script type="text/javascript"
 		src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/heartbeat.js"></script>
+	
 </head>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Criar sua própria reunião</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/docs.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
+  </head>
 <body>
-
-
 <%@ include file="bbb_api.jsp"%>
+<%@ include file="demo_header.jsp"%>
 <%@ page import="java.util.regex.*"%>
-
-<br>
-
 <%
 	if (request.getParameterMap().isEmpty()) {
-		//
-		// Assume we want to create a meeting
-		//
 %>
-<%@ include file="demo_header.jsp"%>
-<h2>Criar sua própria reunião</h2>
-
-<p />
-<FORM NAME="form1" METHOD="GET">
-
-<table width=600 cellspacing="20" cellpadding="20"
-	style="border-collapse: collapse; border-right-color: rgb(136, 136, 136);"
-	border=3>
-	<tbody>
-		<tr>
-			<td width="50%">Criar sua própria reunião.
-			<p />
-			</td>
-			<td width="50%">Passo 1. Entre com seu Nome: <input type="text" autofocus required
-				name="username1" /> <br />
-			<INPUT TYPE=hidden NAME=action VALUE="create"> <br />
-			<input id="submit-button" type="submit" value="Criar reunião" /></td>
-		</tr>
-	</tbody>
-</table>
-
+<div class="container-fluid">
+	<div class="hero-unit">
+		<h2>Criar sua própria reunião</h2>
+	</div>
+	
+<FORM NAME="form1" class="well" METHOD="GET">
+	<INPUT TYPE=hidden NAME=action VALUE="create"> 
+	<label>Passo 1. Entre com seu Nome</label>
+	<input type="text" autofocus required name="username1" /> 
+	<div class="form-actions">
+		<input id="submit-button" type="submit" value="Criar reunião" class="btn btn-primary"/>
+	</div>
 </FORM>
 
 <script>
-//
-// We could have asked the user for both their name and a meeting title, but we'll just use their name to create a title
-// We'll use JQuery to dynamically update the button
-//
 $(document).ready(function(){
     $("input[name='username1']").keyup(function() {
         if ($("input[name='username1']").val() == "") {
@@ -87,67 +97,46 @@ $(document).ready(function(){
 		String url = BigBlueButtonURL.replace("bigbluebutton/","demo/");
 		String inviteURL = url + "create.jsp?action=invite&meetingID=" + URLEncoder.encode(meetingID, "UTF-8");
 %>
-
-<hr />
-<h2>Reunião criada</h2>
-<hr />
-
-
-<table width="800" cellspacing="20" cellpadding="20"
-	style="border-collapse: collapse; border-right-color: rgb(136, 136, 136);"
-	border=3>
-	<tbody>
-		<tr>
-			<td width="50%">
-			<center><strong> Reuniao <%=username%>'s </strong> foi criada.</center>
-			</td>
-
-			<td width="50%">
-			<p>&nbsp;</p>
-
-			Passo 2. Envie a outros usuarios usando o <a href="<%=inviteURL%>">link</a> (abaixo):
-			<form name="form2" method="POST">
-				<textarea cols="62" rows="5" name="myname" style="overflow: hidden">
-					<%=inviteURL%>
-				</textarea>
-			</form>
-			<p>&nbsp;
-			<p />Passo 3. Click no link a seguir para iniciar a reunião:
-			<p>&nbsp;</p>
-			<center><a href="<%=joinURL%>">Iniciar Reunião</a></center>
-			<p>&nbsp;</p>
-
-			</td>
-		</tr>
-	</tbody>
-</table>
-
+	<div class="hero-unit">
+		<h2>Reunião criada</h2>
+	</div>
+	<br>
+	<div class="row-fluid span12">
+		<strong> Reuniao <%=username%>'s </strong> foi criada.
+	</div>
+	<br>
+	<div class="row-fluid span12">
+		Passo 2. Envie a outros usuarios usando o <a href="<%=inviteURL%>">link</a> (abaixo):
+	</div>
+	<br>
+	<div class="row-fluid span12">
+		<form name="form2" method="POST">
+			<textarea cols="300" rows="5" name="myname"><%=inviteURL%></textarea>
+		</form>
+	</div>
+	<br>
+	<div class="row-fluid span12">
+		Passo 3. Click no link a seguir para iniciar a reunião:
+	</div>
+	<br>
+	<div class="row-fluid span12">
+		<a href="<%=joinURL%>" class="btn btn-primary">Iniciar Reunião</a>
+	</div>
 <%
 	} else if (request.getParameter("action").equals("enter")) {
-		//
-		// The user is now attempting to joing the meeting
-		//
 		String meetingID = request.getParameter("meetingID");
 		String username = request.getParameter("username");
-
 		String url = BigBlueButtonURL.replace("bigbluebutton/","demo/");
 		String enterURL = url + "create.jsp?action=join&username="
 			+ URLEncoder.encode(username, "UTF-8") + "&meetingID="
 			+ URLEncoder.encode(meetingID, "UTF-8");
-
 		if (isMeetingRunning(meetingID).equals("true")) {
-			//
-			// The meeting has started -- bring the user into the meeting.
-			//
 %>
 <script type="text/javascript">
 	window.location = "<%=enterURL%>";
 </script>
 <%
 	} else {
-			//
-			// The meeting has not yet started, so check until we get back the status that the meeting is running
-			//
 			String checkMeetingStatus = getURLisMeetingRunning(meetingID);
 %>
 
@@ -160,10 +149,7 @@ $(document).ready(function(){
 			mycallback();
 		});
 	});
-
-
 function mycallback() {
-	// Not elegant, but works around a bug in IE8 
 	var isMeetingRunning = ($("#HeartBeatDIV").text().search("true") > 0 );
 
 	if (isMeetingRunning) {
@@ -172,18 +158,14 @@ function mycallback() {
 }
 </script>
 
-<hr />
-<h2><strong><%=meetingID%></strong> has not yet started.</h2>
-<hr />
+	<div class="hero-unit">
+		<h2><strong><%=meetingID%></strong> não foi iniciada.</h2>
+	</div>
 
-
-<table width=600 cellspacing="20" cellpadding="20"
-	style="border-collapse: collapse; border-right-color: rgb(136, 136, 136);"
-	border=3>
+<table class="table">
 	<tbody>
 		<tr>
-			<td width="50%">
-
+			<td>
 			<p>Ola <%=username%>,</p>
 			<p>Aguardando moderador para iniciar a reunião <strong><%=meetingID%></strong>.</p>
 			<br />
@@ -193,55 +175,30 @@ function mycallback() {
 		</tr>
 	</tbody>
 </table>
-
-
 <%
 }
 	} else if (request.getParameter("action").equals("invite")) {
-		//
-		// We have an invite to an active meeting.  Ask the person for their name 
-		// so they can join.
-		//
 		String meetingID = request.getParameter("meetingID");
 %>
 
-<hr />
-<h2>Convidar</h2>
-<hr />
+<div class="hero-unit">
+	<h2>Convidar</h2>
+</div>
 
-<FORM NAME="form3" METHOD="GET">
-
-<table width=600 cellspacing="20" cellpadding="20"
-	style="border-collapse: collapse; border-right-color: rgb(136, 136, 136);"
-	border=3>
-	<tbody>
-		<tr>
-			<td width="50%">
-
-			<p />Você foi convidado para se juntar<br />
-			<strong><%=meetingID%></strong>.
-			</td>
-
-			<td width="50%">Entre com seu nome: <input type="text"
-				name="username" /> <br />
-			<INPUT TYPE=hidden NAME=meetingID VALUE="<%=meetingID%>"> <INPUT
-				TYPE=hidden NAME=action VALUE="enter"> <br />
-			<input type="submit" value="Join" /></td>
-		</tr>
-	</tbody>
-</table>
-
+<FORM NAME="form3" class="well" METHOD="GET">
+		<INPUT TYPE=hidden NAME=action VALUE="enter">
+		<label>Você foi convidado para se juntar <strong><%=meetingID%></strong></label>
+		<label>Entre com seu nome</label>
+		<input type="text"	name="username" />
+		<INPUT TYPE=hidden NAME=meetingID VALUE="<%=meetingID%>"> 
+		<div class="form-actions">
+		   <input type="submit" value="Entrar" class="btn btn-primary"/>
+		</div>
 </FORM>
 
 <%
 	} else if (request.getParameter("action").equals("join")) {
-		//
-		// We have an invite request to join an existing meeting and the meeting is running
-		//
-		// We don't need to pass a meeting descritpion as it's already been set by the first time 
-		// the meeting was created.
 		String joinURL = getJoinURLViewer(request.getParameter("username"), request.getParameter("meetingID"));
-			
 		if (joinURL.startsWith("http://")) {
 %>
 
@@ -260,6 +217,24 @@ Erro: getJoinURL() falhou
  	}
  }
  %> 
+
+ </div>
+<%@ include file="demo_footer.jsp"%>
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/heartbeat.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-transition.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-alert.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-modal.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-dropdown.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tab.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-tooltip.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-popover.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-button.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-collapse.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-carousel.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap-typeahead.js"></script>
 
 </body>
 </html>
