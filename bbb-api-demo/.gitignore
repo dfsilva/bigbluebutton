@@ -1,6 +1,5 @@
 build
 lib
-src/main/webapp/bbb_api_conf.jsp
 .project
 .metadata
 .classpath
