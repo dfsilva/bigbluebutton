@@ -1,6 +1,6 @@
-usePlugin 'java'
-usePlugin 'war'
-usePlugin 'eclipse'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
 
 version = '0.7'
 jar.enabled = true
@@ -12,6 +12,7 @@ task dependencies(type: Copy) {
     from configurations.default.allArtifacts*.file
 }
 
+/**
 task resolveDeps(dependsOn: configurations.default.buildArtifacts, type: Copy) {
     into('lib')
     from configurations.default
@@ -23,7 +24,7 @@ task resolveDependencies(dependsOn: configurations.default.buildArtifacts, type:
     from configurations.default
     from configurations.default.allArtifacts*.file
 }
-
+**/
 repositories {
    	add(new org.apache.ivy.plugins.resolver.ChainResolver()) {
 		 name = 'remote'
