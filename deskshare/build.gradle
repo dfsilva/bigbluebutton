@@ -1,14 +1,13 @@
-apply plugin: 'scala'
-apply plugin: 'java'
-apply plugin: 'eclipse'
+usePlugin 'scala'
+usePlugin 'java'
+usePlugin 'eclipse'
 
-/**
 task resolveDeps(dependsOn: configurations.default.buildArtifacts, type: Copy) {
     into('lib')
     from configurations.default
     from configurations.default.allArtifacts*.file
 }
-**/
+
 /*
  * Seems like we need this here and in the sub-projects section for testng to resolve.
  * (ralam Oct 4, 2009)
@@ -74,7 +73,7 @@ dependencies {
 
 	
 	// Red5
-	compile 'org/red5:red5:1.0r4316@jar'
+	compile 'org/red5:red5:1.0r4415@jar'
 	
 	// Logging
 	compile 'org.slf4j:com.springsource.slf4j.api:1.6.1@jar'
@@ -101,13 +100,13 @@ dependencies {
 	compile 'net.jcip:jcip-annotations:1.0@jar'
 	
 	// Libraries needed to run the scala tools
-	scalaTools 'org.scala-lang:scala-compiler:2.7.7'
-	scalaTools 'org.scala-lang:scala-library:2.7.7'
+	scalaTools 'org.scala-lang:scala-compiler:2.9.2'
+	scalaTools 'org.scala-lang:scala-library:2.9.2'
 
 	// Libraries needed for scala api
-	compile 'org.scala-lang:scala-library:2.7.7'
+	compile 'org.scala-lang:scala-library:2.9.2'
 	
-	compile 'net/lag/configgy:configgy:1.5@jar'
+	compile 'net.lag:configgy:2.0.0'
 	
 	//redis
 	compile 'redis.clients:jedis:2.0.0'
@@ -119,8 +118,8 @@ test {
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'eclipse'
+    usePlugin 'java'
+    usePlugin 'eclipse'
 
 	repositories {
 	   	add(new org.apache.ivy.plugins.resolver.ChainResolver()) {

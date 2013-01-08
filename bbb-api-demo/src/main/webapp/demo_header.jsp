@@ -18,6 +18,8 @@
               <li><a href="demo6.jsp">Gravar(Matterhorn)</a></li>
               <li><a href="create.jsp">Criar</a></li>
               <li><a href="demo4.jsp">Monitirar</a></li>
+              <li><a href="demo_mozilla_persona.jsp">Entrar com Persona</a></li>
+			  <li><a href="demo_openid.jsp">Entrar com OpenId</a></li>
             </ul>
           </div>
         </div>

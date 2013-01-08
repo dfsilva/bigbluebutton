@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
-		width="600" height="300" creationComplete="initDefaultMic()" showCloseButton="true" close="onCancelClicked()">
+		width="600" height="300" creationComplete="initDefaultMic()" showCloseButton="true" close="onCancelClicked()" keyDown="handleKeyDown(event)">
 	<mx:Script>
 		<![CDATA[
+			import flash.system.Security;
+			import flash.ui.Keyboard;
+		
+			import mx.events.CloseEvent;
 			import mx.events.ItemClickEvent;
 			import mx.managers.PopUpManager;
 			
@@ -20,13 +24,20 @@
 			private var mic:Microphone;
 			private var playingAudio:Boolean = false;
 			private var images:Images = new Images();
-			[Bindable] private var cancelIcon:Class = images.delete_icon;
+			[Bindable] private var cancelIcon:Class = images.cancel;
 			
 			private function initDefaultMic():void {
-				mic = Microphone.getMicrophone(-1);
-				mic.setLoopBack(true);
+				mic = Microphone.getMicrophone();
+				
 				if (mic != null) {
-					mic.addEventListener(StatusEvent.STATUS, micStatusEventHandler);				
+					if (mic.muted) {
+						// user has disallowed access to the mic
+						mic.addEventListener(StatusEvent.STATUS, micStatusEventHandler);
+						Security.showSettings();
+					} else {
+						// user has allowed access to the mic
+						mic.setLoopBack(true);
+					}
 				} else {
 					LogUtil.warn("Microphone is used by another application.");
 				}
@@ -35,12 +46,20 @@
 				timer.start();	
 			}
 			
+			// Added by Chad to enable closing the window without clicking the X
+			private function handleKeyDown(event:KeyboardEvent):void {
+				if (event.charCode == Keyboard.ESCAPE) {
+                    this.dispatchEvent(new CloseEvent(CloseEvent.CLOSE));
+                }
+			}
+			
 			private function micStatusEventHandler(event:StatusEvent):void {					
 				switch(event.code) {
 					case "Microphone.Muted":						
 						LogUtil.warn("Access to microphone has been denied.");
 						break;
 					case "Microphone.Unmuted":
+						mic.setLoopBack(true);
 						LogUtil.debug("Access to the microphone has been allowed.");
 						break;
 					default:
