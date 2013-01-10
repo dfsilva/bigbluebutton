@@ -1,5 +1,5 @@
-usePlugin 'eclipse'
-usePlugin 'java'
+apply plugin: 'eclipse'
+apply plugin: 'java'
 
 version = '0.8.2'
 jar.enabled = true
@@ -72,9 +72,9 @@ uploadArchives {
         add project.repositories.fileRepo
     }
 }
-
+/*
 task resolveDeps(dependsOn: configurations.default.buildArtifacts, type: Copy) {
     into('lib')
     from configurations.default
     from configurations.default.allArtifacts*.file
-}
+}*/

@@ -1,6 +1,6 @@
-usePlugin 'eclipse'
-usePlugin 'java'
-usePlugin 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'groovy'
 
 version = '0.8'
 jar.enabled = true
