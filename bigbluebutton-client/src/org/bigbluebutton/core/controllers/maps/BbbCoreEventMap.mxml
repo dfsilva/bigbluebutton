@@ -34,8 +34,8 @@
   
 	<mx:Script>
 	<![CDATA[
-    import org.bigbluebutton.core.EventConstants;
-    import org.bigbluebutton.core.controllers.BbbCoreEventDelegate;
+	    import org.bigbluebutton.core.EventConstants;
+	    import org.bigbluebutton.core.controllers.BbbCoreEventDelegate;
 	]]>
 	</mx:Script>
 
