@@ -44,7 +44,7 @@
 	<mate:Listener method="handleAddToolbarComponent" type="{ToolbarButtonEvent.ADD}"/>	
 	<mate:Listener method="handleRemoveToolbarComponent" type="{ToolbarButtonEvent.REMOVE}"/>
 	<mate:Listener method="openShortcutHelpWindow" type="{ShortcutEvent.OPEN_SHORTCUT_WIN}"/>
-  <mate:Listener method="openVideoPreviewWindow" type="{BBBEvent.OPEN_WEBCAM_PREVIEW}"/>
+    <mate:Listener method="openVideoPreviewWindow" type="{BBBEvent.OPEN_WEBCAM_PREVIEW}"/>
   
 	<mx:Script>
 		<![CDATA[
@@ -116,9 +116,9 @@
 			
 			[Bindable] private var showToolbarOpt:Boolean = true;
 			[Bindable] private var toolbarHeight:Number = 30;
-		      [Bindable] private var toolbarPaddingTop:Number = 4;
-		      [Bindable] private var showFooterOpt:Boolean = true;
-		      [Bindable] private var footerHeight:Number = 20;
+		    [Bindable] private var toolbarPaddingTop:Number = 4;
+		    [Bindable] private var showFooterOpt:Boolean = true;
+		    [Bindable] private var footerHeight:Number = 20;
       
       		[Bindable] private var isTunneling:Boolean = false;
       

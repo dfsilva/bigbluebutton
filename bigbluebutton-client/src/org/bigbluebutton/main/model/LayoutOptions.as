@@ -9,7 +9,7 @@ package org.bigbluebutton.main.model
 		[Bindable] public var showVideoLayout:Boolean = true;
 		[Bindable] public var showResetLayout:Boolean = true;
 		[Bindable] public var showToolbar:Boolean = true;
-    [Bindable] public var showFooter:Boolean = true;
+    	[Bindable] public var showFooter:Boolean = true;
 		[Bindable] public var showHelpButton:Boolean = true;
 		[Bindable] public var showLogoutWindow:Boolean = true;
 		

@@ -70,8 +70,6 @@
                 }
                 return r;
             }
-			
-			
 		]]>
 	</mx:Script>
 	<mx:TextArea id="txtOutput" text="" updateComplete="txtOutput.verticalScrollPosition = txtOutput.maxVerticalScrollPosition + 1;"
