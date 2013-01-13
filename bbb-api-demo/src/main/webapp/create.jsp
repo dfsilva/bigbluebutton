@@ -94,7 +94,7 @@ $(document).ready(function(){
 		//
 		String joinURL = getJoinURL(username, meetingID, "false", "<br>Bem vindo a conferencia %%CONFNAME%%.<br>", null, null);
 
-		String url = BigBlueButtonURL.replace("bigbluebutton/","demo/");
+		String url = BigBlueButtonURL.replace("bigbluebutton/","bbb-api-demo/");
 		String inviteURL = url + "create.jsp?action=invite&meetingID=" + URLEncoder.encode(meetingID, "UTF-8");
 %>
 	<div class="hero-unit">

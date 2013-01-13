@@ -23,7 +23,7 @@ package org.bigbluebutton.core.managers
 			var urlLoader:URLLoader = new URLLoader();
 			urlLoader.addEventListener(Event.COMPLETE, handleComplete);
 			var date:Date = new Date();
-      var localeReqURL:String = buildRequestURL() + "?a=" + date.time;
+      		var localeReqURL:String = buildRequestURL() + "?a=" + date.time;
 			urlLoader.load(new URLRequest(localeReqURL));			
 		}		
 		
@@ -34,16 +34,16 @@ package org.bigbluebutton.core.managers
       return protocol + "://" + serverName + "/" + CONFIG_XML;
     }
     
-		private function handleComplete(e:Event):void{
-			_config = new Config(new XML(e.target.data));
-			 EventBroadcaster.getInstance().dispatchEvent(new Event("configLoadedEvent", true));	
-		//	 var dispatcher:Dispatcher = new Dispatcher();
-		//	 LogUtil.debug("*** Sending config loaded event.");
-		//	 dispatcher.dispatchEvent(new Event("configLoadedEvent", true));
-		}
+	private function handleComplete(e:Event):void{
+		_config = new Config(new XML(e.target.data));
+		 EventBroadcaster.getInstance().dispatchEvent(new Event("configLoadedEvent", true));	
+	//	 var dispatcher:Dispatcher = new Dispatcher();
+	//	 LogUtil.debug("*** Sending config loaded event.");
+	//	 dispatcher.dispatchEvent(new Event("configLoadedEvent", true));
+	}
 		
-		public function get config():Config {
-			return _config;
-		}
+	public function get config():Config {
+		return _config;
+	}
 	}
 }

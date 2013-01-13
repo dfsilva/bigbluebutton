@@ -7,7 +7,7 @@
 //String salt = "7fee9abdaa08bfab39fc27a2843bb9de";
 
 //servidor pablo
-String salt = "92eae34b16e1bc004075c1ecb8c1ecea";
+String salt = "7fee9abdaa08bfab39fc27a2843bb9de";
 
 // This is the URL for the BigBlueButton server
 
@@ -16,6 +16,6 @@ String salt = "92eae34b16e1bc004075c1ecb8c1ecea";
 //servidor desenvolvimento
 //String BigBlueButtonURL = "http://virtools.sytes.net:8000/bigbluebutton/";
 
-String BigBlueButtonURL = "http://webconf.mirave.com.br/bigbluebutton/";
+String BigBlueButtonURL = "http://localhost:8080/bigbluebutton/";
 
 %>
