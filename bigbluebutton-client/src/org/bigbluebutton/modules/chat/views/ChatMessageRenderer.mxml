@@ -35,8 +35,10 @@
 			[Bindable] private var chatTime:String;
 			
 			private function onLinkClick(e:TextEvent):void{
-				var url:URLRequest = new URLRequest(e.text);
-				navigateToURL(url, '_blank');
+        trace("Clicked on link[" + e.text + "] from chat");
+        if (ExternalInterface.available) {
+          ExternalInterface.call("chatLinkClicked", e.text);
+        } 
 			}
 			
 			private function onCreationComplete():void{
@@ -90,6 +92,6 @@
   <mx:HBox width="100%">
     <mx:Spacer width="5"/>
     <mx:Text id="txtMessage" htmlText="{rolledOver ? chatMsg.senderText : chatMsg.translatedText}" link="onLinkClick(event)" color="{chatMsg.senderColor}"
-             rollOver="onRollOver()" rollOut="onRollOut()" width="100%" />
+             rollOver="onRollOver()" rollOut="onRollOut()" width="100%" selectable="true"/>
   </mx:HBox>  
 </mx:VBox>
