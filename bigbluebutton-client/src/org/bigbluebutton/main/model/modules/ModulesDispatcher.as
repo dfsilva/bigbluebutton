@@ -69,7 +69,7 @@ package org.bigbluebutton.main.model.modules
 			var e:UserServicesEvent = new UserServicesEvent(UserServicesEvent.START_USER_SERVICES);
 			e.applicationURI = application;
 			e.hostURI = host;
-      e.isTunnelling = isTunnelling;
+      		e.isTunnelling = isTunnelling;
 			dispatcher.dispatchEvent(e);
 		}
 		

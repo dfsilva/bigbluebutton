@@ -7,8 +7,7 @@
     <application uri="rtmp://virtools2.sytes.net/bigbluebutton" host="http://virtools2.sytes.net/bigbluebutton/api/enter" />
     <language userSelectionEnabled="true" />
     <skinning enabled="false" url="branding/css/theme.css.swf" />
-    <layout showLogButton="false" showVideoLayout="false" showResetLayout="true" showToolbar="true" 
-    	showHelpButton="true" showLogoutWindow="true" showDebugWindow="true"/>
+    <layout showLogButton="true" showVideoLayout="false" showResetLayout="true" showToolbar="true" showHelpButton="true" showLogoutWindow="true" showDebugWindow="true"/>
     
 	<modules>
 		<module name="ChatModule" url="ChatModule.swf?v=4005" 
