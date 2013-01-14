@@ -3,6 +3,7 @@ record-and-playback/playback-client-js/testmeeting/
 record-and-playback/playback-web/playback-web-0.1.war
 bigbluebutton-client/.actionScriptProperties
 bigbluebutton-client/.flexProperties
+bigbluebutton-client/bin/**
 push_to_git.py
 *.class
 *.pydevproject

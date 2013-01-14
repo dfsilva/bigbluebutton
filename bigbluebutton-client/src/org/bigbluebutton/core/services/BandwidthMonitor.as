@@ -141,5 +141,15 @@ package org.bigbluebutton.core.services
 //        LogUtil.debug("\n count: "+event.info.count+ " sent: "+event.info.sent+" timePassed: "+event.info.timePassed+" latency: "+event.info.latency+" cumLatency: " + event.info.cumLatency);
       }
     }
+	
+	public function onBWCheck(... rest):Number { 
+		return 0; 
+	} 
+	
+	public function onBWDone(... rest):void { 
+		var p_bw:Number; 
+		if (rest.length > 0) p_bw = rest[0]; 
+		trace("bandwidth = " + p_bw + " Kbps."); 
+	}
   }
 }
