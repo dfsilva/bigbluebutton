@@ -19,6 +19,7 @@
 	<property name="BBB_MAIN" value="BigBlueButton" />
 	<property name="CHAT" value="ChatModule" />
 	<property name="VIEWERS" value="ViewersModule" />
+	<property name="EXAMPLE_CHAT" value="ExampleChatModule" />
 	<property name="LISTENERS" value="ListenersModule" />
 	<property name="PRESENT" value="PresentModule" />
 	<property name="DESKSHARE" value="DeskShareModule" />
@@ -160,6 +161,10 @@
 		<copy todir="${OUTPUT_DIR}/org/bigbluebutton/common/assets/images" >
 			<fileset dir="${BASE_DIR}/src/org/bigbluebutton/common/assets/images/" />
 		</copy>		
+	</target>
+	
+	<target name="build-example-chat" description="Compile Example Chat Module">
+	        <build-module src="${SRC_DIR}" target="${EXAMPLE_CHAT}" />
 	</target>
 	
 	<target name="build-breakout" description="Compile Breakout Module" >
@@ -456,4 +461,6 @@
 	<target name="cleanandmake" depends="clean-build-all" description="Build BBB client including locales"/>
 
 	<target name="build-custom" depends="init-ant-contrib, build-classroom-audio" description="Build a custom defined module only, to save time as each build takes several minutes" />
+	
+	<target name="build-custom-chat" depends="init-ant-contrib, build-example-chat" description="Build the ExampleChatModule only to reduce build time" /> 
 </project>
