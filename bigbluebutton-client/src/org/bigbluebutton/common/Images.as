@@ -172,6 +172,11 @@ package org.bigbluebutton.common
 		public var arrow_in:Class;
 		
 		[Embed(source="assets/images/shape_handles.png")]
-		public var shape_handles:Class;		
+		public var shape_handles:Class;	
+		
+		[Embed(source="assets/images/poll_icon.png")]
+		public var pollIcon:Class;	
+		
+		
 	}
 }
