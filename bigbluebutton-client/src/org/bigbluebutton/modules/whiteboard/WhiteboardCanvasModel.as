@@ -78,7 +78,7 @@ package org.bigbluebutton.modules.whiteboard
 					break;
 			}
 			
-			LogUtil.error("SEGMENT LENGTH = [" + segment.length + "] STATUS = [" + dobj.status + "]");
+			LogUtil.debug("SEGMENT LENGTH = [" + segment.length + "] STATUS = [" + dobj.status + "]");
 			
 			if (this.shapeStyle == DrawObject.PENCIL) {
 				dobj.status = DrawObject.DRAW_END;
@@ -103,7 +103,7 @@ package org.bigbluebutton.modules.whiteboard
 			if (isDrawing){
 				segment.push(mouseX);
 				segment.push(mouseY);
-				if (segment.length > 30) {
+				if (segment.length > 10) {
 					sendShapeToServer(drawStatus);
 				}
 			}
