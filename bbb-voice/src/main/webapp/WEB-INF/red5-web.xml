@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:lang="http://www.springframework.org/schema/lang"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-                           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.0.xsd">
-
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	
+	<!--
+	Defines a properties file for dereferencing variables
+	-->
 	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="locations">
-	    	<list>
-	    	 	<value>/WEB-INF/red5-web.properties</value>
-	    	 	<value>/WEB-INF/bigbluebutton-sip.properties</value>
-	    	</list>
-	    </property>
+	    <property name="location" value="/WEB-INF/red5-web.properties" />
 	</bean>
 	
-	
-	<bean id="web.context" class="org.red5.server.Context"
+	<!--
+	Defines the web context
+	-->
+	<bean id="web.context" class="org.red5.server.Context" 
 		autowire="byType" />
-
+	
+	<!--
+	Defines the web scopes
+	-->
 	<bean id="web.scope" class="org.red5.server.WebScope"
 		 init-method="register">
 		<property name="server" ref="red5.server" />
@@ -28,25 +28,11 @@
 		<property name="virtualHosts" value="${webapp.virtualHosts}" />
 	</bean>
 
-	<bean id="web.handler" class="org.bigbluebutton.voiceconf.red5.Application">
-		<property name="sipServerHost" value="${sip.server.host}" />
-		<property name="sipPort" value="${sip.server.port}" />
-		<property name="username" value="${sip.server.username}" />
-		<property name="password" value="${sip.server.password}" />
-		<property name="startAudioPort" value="${startAudioPort}" />
-		<property name="stopAudioPort" value="${stopAudioPort}" />
-		<property name="sipPeerManager" ref="sipPeerManager"/>
-		<property name="clientConnectionManager" ref="clientConnectionManager"/>
-	</bean>
-
-    <bean id="voiceconf.service" class="org.bigbluebutton.voiceconf.red5.Service">
-        <property name="sipPeerManager" ref="sipPeerManager"/>
-    </bean>
-    	
-	<bean id="sipPeerManager" class="org.bigbluebutton.voiceconf.sip.SipPeerManager">
-		<property name="sipStackDebugLevel" value="${sipStackDebugLevel}"/>
-	</bean>
-	
-	<bean id="clientConnectionManager" class="org.bigbluebutton.voiceconf.red5.ClientConnectionManager"/>
-      
+	<!--
+	Defines the web handler which acts as an applications endpoint
+	-->
+	<bean id="web.handler" 
+	    class="org.red5.core.Application" 
+		singleton="true" />
+ 
 </beans>

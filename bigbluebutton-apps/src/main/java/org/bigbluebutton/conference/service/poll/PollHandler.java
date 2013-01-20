@@ -19,19 +19,17 @@
 
 package org.bigbluebutton.conference.service.poll;
 
+import org.bigbluebutton.conference.BigBlueButtonSession;
+import org.bigbluebutton.conference.Constants;
+import org.bigbluebutton.conference.service.recorder.RecorderApplication;
+import org.red5.logging.Red5LoggerFactory;
+import org.red5.server.adapter.ApplicationAdapter;
 import org.red5.server.adapter.IApplication;
 import org.red5.server.api.IClient;
 import org.red5.server.api.IConnection;
 import org.red5.server.api.IScope;
-import org.slf4j.Logger;
-import org.red5.logging.Red5LoggerFactory;
-import org.red5.server.api.so.ISharedObject;
-import org.red5.server.adapter.ApplicationAdapter;
 import org.red5.server.api.Red5;
-import org.bigbluebutton.conference.BigBlueButtonSession;
-import org.bigbluebutton.conference.Constants;
-import org.bigbluebutton.conference.service.recorder.RecorderApplication;
-//import org.bigbluebutton.conference.service.recorder.poll.PollEventRecorder;
+import org.slf4j.Logger;
 
 public class PollHandler extends ApplicationAdapter implements IApplication{
 
