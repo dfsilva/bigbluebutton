@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:lang="http://www.springframework.org/schema/lang"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-                           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.0.xsd">
-
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	
+	<!--
+	Defines a properties file for dereferencing variables
+	-->
 	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="locations">
-	    	<list>
-	    	 	<value>/WEB-INF/red5-web.properties</value>
-	    	 	<value>/WEB-INF/bigbluebutton.properties</value>
-	    	</list>
-	    </property>
+	    <property name="location" value="/WEB-INF/red5-web.properties" />
 	</bean>
 	
-	<bean id="web.context" class="org.red5.server.Context" autowire="byType" />
+	<!--
+	Defines the web context
+	-->
+	<bean id="web.context" class="org.red5.server.Context" 
+		autowire="byType" />
 	
+	<!--
+	Defines the web scopes
+	-->
 	<bean id="web.scope" class="org.red5.server.WebScope"
 		 init-method="register">
 		<property name="server" ref="red5.server" />
@@ -26,22 +28,11 @@
 		<property name="virtualHosts" value="${webapp.virtualHosts}" />
 	</bean>
 
-	<bean id="web.handler" class="org.bigbluebutton.conference.BigBlueButtonApplication">
-		<property name="participantsApplication"> <ref bean="participantsApplication"/></property>		
-		<property name="applicationListeners">
-    		<set>
-				<ref bean="participantsHandler" />
-				<ref bean="chatHandler" />
-				<ref bean="presentationHandler" />
-				<ref bean="voiceHandler" />
-				<ref bean="whiteboardApplication" />
-    		</set>
-  		</property>	  
-  		<property name="recorderApplication"> <ref bean="recorderApplication"/></property>	
-  		<property name="version" value="${version}"/>		
-	</bean>
-	
-	<import resource="bbb-apps.xml" />
-	<import resource="bbb-voice-app.xml" />
-  <import resource="bbb-voice-freeswitch.xml" />
+	<!--
+	Defines the web handler which acts as an applications endpoint
+	-->
+	<bean id="web.handler" 
+	    class="org.red5.core.Application" 
+		singleton="true" />
+ 
 </beans>
