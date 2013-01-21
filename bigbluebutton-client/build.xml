@@ -33,6 +33,7 @@
 	<property name="SETTINGS" value="SettingsModule" />
 	<property name="VIDEO_DOCK" value="VideodockModule" />
 	<property name="POLLING" value="PollingModule" />
+	<property name="SHARE_FILES" value="ShareFilesModule" />
 	
 	<xmlproperty file="${SRC_DIR}/conf/locales.xml" collapseAttributes="true"/>
 	
@@ -184,6 +185,10 @@
 		<build-module src="${SRC_DIR}" target="${POLLING}" />
 	</target>
 	
+	<target name="build-share-files" description="Compile Share Files Module">
+		<build-module src="${SRC_DIR}" target="${SHARE_FILES}" />
+	</target>
+	
 	<target name="build-listeners" description="Compile Listeners Module">
 		<build-module src="${SRC_DIR}" target="${LISTENERS}" />
 	</target>
@@ -243,7 +248,7 @@
 	
 	<!-- just a grouping of modules to compile -->
 	<target name="build-main-chat-viewers-listeners-present" 
-			depends="build-bbb-main, build-bbb-main-test, build-chat, build-polling, build-example-chat, build-viewers, build-listeners, build-present, build-breakout"
+			depends="build-bbb-main, build-bbb-main-test, build-chat, build-polling, build-share-files, build-example-chat, build-viewers, build-listeners, build-present, build-breakout"
 			description="Compile main, chat, viewers, listeners, present, breakout modules">
 	</target>
 	
@@ -470,4 +475,6 @@
 	<target name="build-custom-chat" depends="init-ant-contrib, build-example-chat" description="Build the ExampleChatModule only to reduce build time" />
 	
 	<target name="build-poll" depends="init-ant-contrib, build-polling" description="Build only the polling module." />
+	
+	<target name="build-only-share-files" depends="init-ant-contrib, build-share-files" description="Build only the sharing files" />
 </project>

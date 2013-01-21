@@ -40,11 +40,11 @@
 	</EventHandlers>	
 	
 	<!-- Module Events -->
-	<EventHandlers type="{ModuleEvent.START}">
+	<EventHandlers type="{PollModuleEvent.START}">
 		<MethodInvoker generator="{PollingManager}" method="handleStartModuleEvent" arguments="{event.module}"/>
 	</EventHandlers>	
 	
-	<EventHandlers type="{ModuleEvent.STOP}">
+	<EventHandlers type="{PollModuleEvent.STOP}">
 	</EventHandlers>	
 		
     <!-- PollingInstructionsWindow Events -->

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  BigBlueButton open source conferencing system - http://www.bigbluebutton.org
+  
+  Copyright (c) 2010 BigBlueButton Inc. and by respective authors (see below).
+  
+  BigBlueButton is free software; you can redistribute it and/or modify it under the 
+  terms of the GNU Lesser General Public License as published by the Free Software 
+  Foundation; either version 2.1 of the License, or (at your option) any later 
+  version. 
+  
+  BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY 
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+  PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+  
+  You should have received a copy of the GNU Lesser General Public License along 
+  with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+ 
+  $Id: $
+-->
+
+<mx:Button xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:mate="http://mate.asfusion.com/"	
+	toolTip="Compartilhamento de Arquivos"
+	implements="org.bigbluebutton.common.IBbbToolbarComponent"
+	initialize="init();" 
+	click="openFileWindows();"
+	icon="{fileShareIcon}"
+	>
+	<mx:Script>
+		<![CDATA[
+		    import com.asfusion.mate.events.Dispatcher;
+			import org.bigbluebutton.common.Images;
+			import org.bigbluebutton.common.LogUtil;
+			import org.bigbluebutton.main.views.MainToolbar;
+			import org.bigbluebutton.util.i18n.ResourceUtil;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Menu;
+			import mx.events.MenuEvent;
+			
+			[Bindable] 
+		    [Embed(source="../../../common/assets/images/share-file-icon.png")]  
+			public var fileShareIcon:Class;	
+			
+			
+			public function init():void {	
+				LogUtil.debug("Inicializando botao de compartilhamento de arquivos.");
+            }
+			
+			private function openFileWindows():void{
+				LogUtil.debug("Abrindo janela de compartilhamento de arquivos.");
+			}
+								
+			public function getAlignment():String{
+				return MainToolbar.ALIGN_RIGHT;
+			}
+		]]>
+	</mx:Script>  
+</mx:Button>  

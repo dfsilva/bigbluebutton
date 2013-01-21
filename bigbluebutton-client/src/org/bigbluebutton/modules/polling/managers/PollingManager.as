@@ -216,7 +216,7 @@ package org.bigbluebutton.modules.polling.managers
 		  
 		   public function handleReturnPollEvent(e:PollGetPollEvent):void{
 			  var unique:Boolean = true;
-			  if (toolbarButtonManager.button.pollList.length != null){
+			  if (toolbarButtonManager.button.pollList.length != 0){
 				  for (var i:int = 0; i < toolbarButtonManager.button.pollList.length; i++){
 					  var listKey:String = toolbarButtonManager.button.pollList.getItemAt(i).room+"-"+toolbarButtonManager.button.pollList.getItemAt(i).title;
 					  if (e.pollKey == listKey){
@@ -230,7 +230,7 @@ package org.bigbluebutton.modules.polling.managers
 				  toolbarButtonManager.button.pollList.addItem(e.poll);
 			  }
 		  }
-		
+		 
 		  public function handleCheckTitlesEvent(e:PollGetTitlesEvent):void{
 			  if (e.type == PollGetTitlesEvent.CHECK){
 				  service.checkTitles();
