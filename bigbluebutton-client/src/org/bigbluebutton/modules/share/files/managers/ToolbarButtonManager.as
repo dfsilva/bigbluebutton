@@ -17,7 +17,7 @@
 * 
 */
 
-package org.bigbluebutton.modules.share.files.manager
+package org.bigbluebutton.modules.share.files.managers
 {
 	import com.asfusion.mate.events.Dispatcher;
 	import org.bigbluebutton.common.IBbbModuleWindow;

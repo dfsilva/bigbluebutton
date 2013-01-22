@@ -28,11 +28,6 @@
 			creationComplete="onCreationComplete()" 
 			xmlns:mate="http://mate.asfusion.com/" xmlns:controls="flexlib.controls.*">
 	
-	<mate:Listener type="{ListenersEvent.ROOM_MUTE_STATE}" method="roomMuteStateChange" />
-	<mate:Listener type="{ListenersEvent.REGISTER_LISTENERS}" method="registerListeners" />
-	<mate:Listener type="{ListenersEvent.SET_LOCAL_MODERATOR_STATUS}" method="{setModerator}" />
-	<mate:Listener type="{LocaleChangeEvent.LOCALE_CHANGED}" method="localeChanged" />
-	
 	<mx:Script>
 		<![CDATA[
 			import flash.events.MouseEvent;
@@ -52,92 +47,44 @@
 			import org.bigbluebutton.common.events.LocaleChangeEvent;
 			import org.bigbluebutton.core.managers.UserManager;
 			import org.bigbluebutton.main.views.MainCanvas;
-			import org.bigbluebutton.modules.listeners.events.ListenersCommand;
-			import org.bigbluebutton.modules.listeners.events.ListenersEvent;
-			import org.bigbluebutton.modules.listeners.model.ListenerOptions;
 			import org.bigbluebutton.util.i18n.ResourceUtil;
 			
-			private var images:Images= new Images();			
-			private var _xPosition:int;
-			private var _yPosition:int;
- 			
-			[Bindable] private var muteAllIcon:Class = images.sound_mute; 
-			[Bindable] private var unmuteAllIcon:Class = images.sound_none;
-			[Bindable] private var kickIcon:Class = images.eject_user;
-			[Bindable] public var listeners:ArrayCollection = new ArrayCollection();
-			[Bindable] public var moderator:Boolean;
-			[Bindable] private var windowTitle:String = ResourceUtil.getInstance().getString('bbb.listeners.title', ["",""]);			
-			[Bindable] public var listenerOptions:ListenerOptions;
-			[Bindable] private var showPushToTalkBtn:Boolean = UserManager.getInstance().getConference().voiceLocked &&
-				UserManager.getInstance().getConference().voiceJoined;
+			[Bindable] public var files:ArrayCollection = new ArrayCollection();
 			
 			private function onCreationComplete():void {
 			
 			}
 			
-			private function updateShowPushToTalkBtn(show:Boolean):void {
-			}
-			
-			private function updateNumberOfListeners(numListeners:int):void {
-			}
-			
 			public function getPrefferedPosition():String{
+				return MainCanvas.TOP_LEFT;
 			}
 			
-			public function setMuteState(mute:Boolean):void{
+			private function onItemRollOver(event:ListEvent):void{
 			}
 			
-			private function toggleMuteState():void{
+			private function onItemRollOut(event:ListEvent):void{
 			}
 			
-			private function toggleMuteMeState():void{
-			}
-			
-			private function muteAllListeners():void{
-			}
-			
-			private function unmuteAllListeners():void{
-			}
-			
-			private function roomMuteStateChange(e:ListenersEvent):void{
-			}
-			
-			private function registerListeners(e:ListenersEvent):void{
-			}
-			
-			private function setModerator(e:ListenersEvent):void{
-			}
-						
-			private function onItemRollOver(e:ListEvent):void{
-			}
-			
-			private function onItemRollOut(e:ListEvent):void{
-			}
-			
-			override protected function resourcesChanged():void{
-			}
-			
-			private function localeChanged(e:LocaleChangeEvent):void{
+			private function addFilesClicked():void {
+				
 			}
 		]]>
 	</mx:Script>
 	
-	<mx:DataGrid id="viewersGrid" dataProvider="{files}" editable="false"
+	<mx:DataGrid id="filesGrid" dataProvider="{files}" editable="false"
 				 dragEnabled="false" rightClick="" width="100%" height="100%"
 				 itemRollOver="onItemRollOver(event)" itemRollOut="onItemRollOut(event)">
 		<mx:columns>
-			<mx:DataGridColumn dataField="role" headerText="Nome" dataTipField="Nome do Arquivo" editable="false" width="35"
-							   itemRenderer="org.bigbluebutton.modules.viewers.views.RoleItemRenderer" sortable="false" id="roleField"/>
-			<mx:DataGridColumn dataField="name" headerText="{ResourceUtil.getInstance().getString('bbb.viewers.viewersGrid.nameItemRenderer')}" editable="true" width="100" sortable="false"
-							   itemRenderer="org.bigbluebutton.modules.viewers.views.NameItemRenderer"/>
-			<mx:DataGridColumn dataField="status" headerText="{ResourceUtil.getInstance().getString('bbb.viewers.viewersGrid.statusItemRenderer')}" sortable="false"
-							   itemRenderer="org.bigbluebutton.modules.viewers.views.StatusItemRenderer"/>
+			<mx:DataGridColumn dataField="name" headerText="Nome" dataTipField="Nome do Arquivo" editable="false" width="35"
+							   itemRenderer="org.bigbluebutton.modules.share.files.views.NameFileRenderer" sortable="false" 
+							   id="fileNameField"/>
+			<mx:DataGridColumn dataField="type" headerText="Tipo" editable="true" width="100" sortable="false"
+							   itemRenderer="org.bigbluebutton.modules.share.files.views.TypeFileRenderer"/>
 		</mx:columns>
 	</mx:DataGrid>
 	
 	<mx:ControlBar width="100%"> 
-		<mx:Button id="presentBtn" label="" visible="{isModerator}" width="130" height="20"
-				   toolTip="Adicionar arquivos"
-				   click="addFilesClick()"/>
+		<mx:Button id="shareFileBtn" label="Adicionar" width="130" height="20"
+				   toolTip="Adicionar arquivos" click="addFilesClicked()"/>
 	</mx:ControlBar>  
 </MDIWindow>

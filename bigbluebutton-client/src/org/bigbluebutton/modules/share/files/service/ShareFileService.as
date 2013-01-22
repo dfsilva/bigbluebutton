@@ -36,7 +36,7 @@ package org.bigbluebutton.modules.share.files.service
 	import org.bigbluebutton.common.events.OpenWindowEvent;
 	import org.bigbluebutton.common.IBbbModuleWindow;
 	
-	public class Service{	
+	public class ShareFileService{	
 		public static const LOGNAME:String = "[ShareFilesService] ";
 
 		private var pollingSO:SharedObject;
@@ -47,7 +47,7 @@ package org.bigbluebutton.modules.share.files.service
 		
 		private static const SHARED_OBJECT:String = "shareFilesSO";
 		
-		public function Service(){
+		public function ShareFileService(){
 			LogUtil.debug(LOGNAME + " Construindo ShareFilesService");
 		}
 	}

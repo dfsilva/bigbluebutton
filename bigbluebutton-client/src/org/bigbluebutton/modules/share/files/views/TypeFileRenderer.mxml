@@ -29,8 +29,8 @@
 			import org.bigbluebutton.common.Images;
 			private var images:Images = new Images();
 			
-			[Bindable] private var icon : Object = images.shareFileIcon;
+			[Bindable] private var shareFileIcon : Object = images.share_file_icon;
 		]]>
 	</mx:Script>	
-	<mx:Image id="fileTypeImage" source="{icon}" toolTip="{data.type.description}"/>
+	<mx:Image id="fileTypeImage" source="{shareFileIcon}" toolTip="{data.type.description}"/>
 </mx:HBox>

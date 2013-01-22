@@ -175,10 +175,16 @@ package org.bigbluebutton.common
 		public var shape_handles:Class;	
 		
 		[Embed(source="assets/images/poll_icon.png")]
-		public var pollIcon:Class;	
+		public var poll_icon:Class;	
 		
 		[Embed(source="assets/images/share-file-icon.png")]
-		public var shareFileIcon:Class;	
+		public var share_file_icon:Class;	
+		
+		[Embed(source="assets/images/pdf_icon.png")]
+		public var pdf_icon:Class;	
+		
+		[Embed(source="assets/images/ppt_icon.png")]
+		public var ppt_icon:Class;	
 		
 		
 	}

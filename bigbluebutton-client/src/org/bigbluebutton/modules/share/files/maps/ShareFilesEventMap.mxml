@@ -22,25 +22,30 @@
 
 	<mx:Script>
 		<![CDATA[
-			import mx.events.FlexEvent;		
-			import org.bigbluebutton.main.events.MadePresenterEvent;
-			import org.bigbluebutton.main.events.BBBEvent;
+			import mx.events.FlexEvent;
 			
-			import org.bigbluebutton.modules.share.files.manager.Manager;
+			import org.bigbluebutton.main.events.BBBEvent;
+			import org.bigbluebutton.main.events.MadePresenterEvent;
+			import org.bigbluebutton.modules.share.files.events.ShareFilesModuleStartedEvent;
+			import org.bigbluebutton.modules.share.files.managers.ShareFilesManager;
 			]]>
 	</mx:Script>
 
 	<EventHandlers type="{FlexEvent.PREINITIALIZE}">
-		<ObjectBuilder generator="{Manager}"/>		
+		<ObjectBuilder generator="{ShareFilesManager}"/>		
 	</EventHandlers>
 	
 	<EventHandlers type="{MadePresenterEvent.SWITCH_TO_PRESENTER_MODE}">
-		<MethodInvoker generator="{Manager}" method="handleMadePresenterEvent" arguments="{event}"/>
+		<MethodInvoker generator="{ShareFilesManager}" method="handleMadePresenterEvent" arguments="{event}"/>
 	</EventHandlers>
 	 
 	<EventHandlers type="{MadePresenterEvent.SWITCH_TO_VIEWER_MODE}">
-		<MethodInvoker generator="{Manager}" method="handleMadeViewerEvent" arguments="{event}"/>
+		<MethodInvoker generator="{ShareFilesManager}" method="handleMadeViewerEvent" arguments="{event}"/>
 	</EventHandlers>	
+	
+	<EventHandlers type="{ShareFilesModuleStartedEvent.SHARE_FILES_MODULE_STARTED}" >
+		<MethodInvoker generator="{ShareFilesManager}" method="moduleStarted" arguments="{event}" />
+	</EventHandlers>
 	
 	
 </EventMap>

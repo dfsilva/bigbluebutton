@@ -33,9 +33,11 @@
 			
 			import org.bigbluebutton.common.LogUtil;
 			import org.bigbluebutton.common.events.OpenWindowEvent;
+			import org.bigbluebutton.modules.share.files.events.ShareFilesModuleStartedEvent;
 			
 			private var _moduleName:String = "ShareFilesModule";			
 			private var _attributes:Object;
+			private var dispatcher:Dispatcher;
 			
 			public var globalDispatcher:Dispatcher = new Dispatcher();
 			
@@ -82,7 +84,10 @@
 			
 			public function start(attributes:Object):void {	
 				this._attributes = attributes;
-				LogUtil.debug("Modulo ShareFilesModule inicializado!");
+				dispatcher = new Dispatcher();
+				var e:ShareFilesModuleStartedEvent = new ShareFilesModuleStartedEvent(ShareFilesModuleStartedEvent.SHARE_FILES_MODULE_STARTED);
+				e.module = this;
+				dispatcher.dispatchEvent(e);
 			}
 			
 			public function stop():void {
