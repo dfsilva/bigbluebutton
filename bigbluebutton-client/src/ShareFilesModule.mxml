@@ -22,7 +22,11 @@
 
 <mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
 	implements="org.bigbluebutton.common.IBigBlueButtonModule" 
-	xmlns:example="org.bigbluebutton.modules.share.files.*">
+	xmlns:share-files="org.bigbluebutton.modules.share.files.*"
+	xmlns:maps="org.bigbluebutton.modules.share.files.maps.*">
+	
+	<maps:ShareFilesEventMap id="eventMap"/>
+	
 	<mx:Script>
 		<![CDATA[
 			import com.asfusion.mate.events.Dispatcher;

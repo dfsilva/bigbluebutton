@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
   BigBlueButton open source conferencing system - http://www.bigbluebutton.org
   
@@ -18,29 +20,22 @@
   $Id: $
 -->
 
-<EventMap xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="http://mate.asfusion.com/">
-
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	horizontalAlign="center">
+	
 	<mx:Script>
 		<![CDATA[
-			import mx.events.FlexEvent;		
-			import org.bigbluebutton.main.events.MadePresenterEvent;
-			import org.bigbluebutton.main.events.BBBEvent;
+			import org.bigbluebutton.common.Images;
+			import org.bigbluebutton.common.Role;
 			
-			import org.bigbluebutton.modules.share.files.manager.Manager;
-			]]>
-	</mx:Script>
-
-	<EventHandlers type="{FlexEvent.PREINITIALIZE}">
-		<ObjectBuilder generator="{Manager}"/>		
-	</EventHandlers>
-	
-	<EventHandlers type="{MadePresenterEvent.SWITCH_TO_PRESENTER_MODE}">
-		<MethodInvoker generator="{Manager}" method="handleMadePresenterEvent" arguments="{event}"/>
-	</EventHandlers>
-	
-	<EventHandlers type="{MadePresenterEvent.SWITCH_TO_VIEWER_MODE}">
-		<MethodInvoker generator="{Manager}" method="handleMadeViewerEvent" arguments="{event}"/>
-	</EventHandlers>	
-	
-	
-</EventMap>
+			private var images:Images = new Images();
+			
+			[Bindable] private var adminIcon : Object = images.admin;
+   			[Bindable] private var viewerIcon : Object = images.participant;
+  			   			   			
+		]]>
+	</mx:Script>	
+	<mx:Image id="roleImage" source="{data.role == Role.MODERATOR ? adminIcon : ''}" 
+			  toolTip="Tipo do Arquivo"/>
+</mx:HBox>

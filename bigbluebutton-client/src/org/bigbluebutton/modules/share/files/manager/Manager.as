@@ -22,6 +22,7 @@ package org.bigbluebutton.modules.share.files.manager
 		
 		public static const LOGNAME:String = "[ShareFilesManager] ";	
 		
+		public var toolbarButtonManager:ToolbarButtonManager;
 		private var module:PollingModule;
 		private var globalDispatcher:Dispatcher;
 		private var isPolling:Boolean = false;
@@ -31,14 +32,17 @@ package org.bigbluebutton.modules.share.files.manager
 		public function Manager(){
 				LogUtil.debug(LOGNAME +" Construindo ShareFilesManager");
 			    globalDispatcher = new Dispatcher();
+				toolbarButtonManager = new ToolbarButtonManager();
 		}
 		
 		public function handleMadePresenterEvent(e:MadePresenterEvent):void{
 			LogUtil.debug(LOGNAME +" Adicionando o botao de compartilhar arquivos a toolbar");
+			toolbarButtonManager.addToolbarButton();
 		}
 		
 		public function handleMadeViewerEvent(e:MadePresenterEvent):void{
 			LogUtil.debug(LOGNAME +" Removendo o botao de compartilhar arquivos a toolbar");
+			toolbarButtonManager.removeToolbarButton();
 		}
 	
    }

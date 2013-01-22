@@ -112,7 +112,7 @@
 				var startEvent:StartListenersModuleEvent = new StartListenersModuleEvent(StartListenersModuleEvent.START_LISTENERS_MODULE);
 				startEvent.module = this;
 				globalDispatcher.dispatchEvent(startEvent);
-			}
+			} 
 		
 			public function stop():void {
 				LogUtil.debug("ListenersModule is stopping");

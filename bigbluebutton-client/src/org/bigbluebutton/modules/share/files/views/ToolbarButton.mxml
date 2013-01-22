@@ -41,13 +41,12 @@
 			import mx.events.MenuEvent;
 			
 			[Bindable] 
-		    [Embed(source="../../../common/assets/images/share-file-icon.png")]  
+			[Embed(source="../../../../common/assets/images/share-file-icon.png")]  
 			public var fileShareIcon:Class;	
-			
 			
 			public function init():void {	
 				LogUtil.debug("Inicializando botao de compartilhamento de arquivos.");
-            }
+            } 
 			
 			private function openFileWindows():void{
 				LogUtil.debug("Abrindo janela de compartilhamento de arquivos.");
