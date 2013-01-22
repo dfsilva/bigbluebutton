@@ -177,6 +177,9 @@ package org.bigbluebutton.common
 		[Embed(source="assets/images/poll_icon.png")]
 		public var pollIcon:Class;	
 		
+		[Embed(source="assets/images/share-file-icon.png")]
+		public var shareFileIcon:Class;	
+		
 		
 	}
 }

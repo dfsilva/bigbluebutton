@@ -27,15 +27,10 @@
 	<mx:Script>
 		<![CDATA[
 			import org.bigbluebutton.common.Images;
-			import org.bigbluebutton.common.Role;
-			
 			private var images:Images = new Images();
 			
-			[Bindable] private var adminIcon : Object = images.admin;
-   			[Bindable] private var viewerIcon : Object = images.participant;
-  			   			   			
+			[Bindable] private var icon : Object = images.shareFileIcon;
 		]]>
 	</mx:Script>	
-	<mx:Image id="roleImage" source="{data.role == Role.MODERATOR ? adminIcon : ''}" 
-			  toolTip="Tipo do Arquivo"/>
+	<mx:Image id="fileTypeImage" source="{icon}" toolTip="{data.type.description}"/>
 </mx:HBox>
