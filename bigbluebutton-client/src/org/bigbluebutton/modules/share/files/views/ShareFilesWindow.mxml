@@ -40,7 +40,9 @@
 			import mx.controls.Alert;
 			import mx.controls.Image;
 			import mx.controls.Label;
+			import mx.controls.PopUpButton;
 			import mx.events.ListEvent;
+			import mx.managers.PopUpManager;
 			import mx.messaging.channels.AMFChannel;
 			
 			import org.bigbluebutton.common.Images;
@@ -52,6 +54,7 @@
 			[Bindable] public var files:ArrayCollection = new ArrayCollection();
 			
 			private function onCreationComplete():void {
+				showCloseButton = false;
 			
 			}
 			
@@ -66,13 +69,20 @@
 			}
 			
 			private function addFilesClicked():void {
+				var uploadWindow:UploadFilesWindow = new UploadFilesWindow();
+				uploadWindow.showCloseButton = true;
+				PopUpManager.addPopUp(uploadWindow, this, true);
+				PopUpManager.centerPopUp(uploadWindow);
+			}
+			
+			private function onRightClick(event:MouseEvent):void{
 				
 			}
 		]]>
 	</mx:Script>
 	
 	<mx:DataGrid id="filesGrid" dataProvider="{files}" editable="false"
-				 dragEnabled="false" rightClick="" width="100%" height="100%"
+				 dragEnabled="false" rightClick="onRightClick(event)" width="100%" height="100%"
 				 itemRollOver="onItemRollOver(event)" itemRollOut="onItemRollOut(event)">
 		<mx:columns>
 			<mx:DataGridColumn dataField="name" headerText="Nome" dataTipField="Nome do Arquivo" editable="false" width="35"
