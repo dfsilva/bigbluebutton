@@ -1,5 +1,7 @@
 package org.bigbluebutton.modules.whiteboard
 {
+	import com.asfusion.mate.events.Dispatcher;
+	
 	import flash.display.Shape;
 	
 	import mx.collections.ArrayCollection;
@@ -30,6 +32,7 @@ package org.bigbluebutton.modules.whiteboard
 		private var feedback:Shape = new Shape();
 		private var latentFeedbacks:Array = new Array();
 		private var segment:Array = new Array();
+		private var presenterSegment:Array = new Array();
 		private var shapeList:Array = new Array();
 		
 		private var shapeFactory:ShapeFactory = new ShapeFactory();
@@ -42,6 +45,14 @@ package org.bigbluebutton.modules.whiteboard
 		private var drawStatus:String = DrawObject.DRAW_START;
 		private var width:Number;
 		private var height:Number;
+		
+		private var dispatcher:Dispatcher;
+		
+		
+		public function WhiteboardCanvasModel()
+		{
+			dispatcher = new Dispatcher();
+		}
 
 		public function doMouseUp():void{
 			if (isDrawing) {
@@ -57,13 +68,14 @@ package org.bigbluebutton.modules.whiteboard
 		
 		private var objCount:int = 0;
 		
-		private function sendShapeToServer(status:String):void{
-			if (segment.length == 0) return;
-			
+		private function sendShapeToServer(drawStatus:String):void{
+			var dobj:DrawObject = createDrawObject(drawStatus);
+			wbCanvas.sendShapeToServer(dobj);			
+		}
+		
+		private function createDrawObject(status:String):DrawObject{
 			var dobj:DrawObject = shapeFactory.createDrawObject(this.shapeStyle, segment, this.drawColor, this.thickness);
-			
 			dobj.id = "" + objCount++;
-			
 			switch (status) {
 				case DrawObject.DRAW_START:
 					dobj.status = DrawObject.DRAW_START;
@@ -77,9 +89,7 @@ package org.bigbluebutton.modules.whiteboard
 					drawStatus = DrawObject.DRAW_START;
 					break;
 			}
-			
 			LogUtil.debug("SEGMENT LENGTH = [" + segment.length + "] STATUS = [" + dobj.status + "]");
-			
 			if (this.shapeStyle == DrawObject.PENCIL) {
 				dobj.status = DrawObject.DRAW_END;
 				drawStatus = DrawObject.DRAW_START;
@@ -87,8 +97,40 @@ package org.bigbluebutton.modules.whiteboard
 				var xy:Array = wbCanvas.getMouseXY();
 				segment.push(xy[0], xy[1]);
 			}
-			
-			wbCanvas.sendShapeToServer(dobj);			
+			return dobj;
+		}
+		
+		private function createDrawObjectPresenter(status:String):DrawObject{
+			var dobj:DrawObject = shapeFactory.createDrawObject(this.shapeStyle, presenterSegment, this.drawColor, this.thickness);
+			dobj.id = "" + objCount++;
+			switch (status) {
+				case DrawObject.DRAW_START:
+					dobj.status = DrawObject.DRAW_START;
+					drawStatus = DrawObject.DRAW_UPDATE;
+					break;
+				case DrawObject.DRAW_UPDATE:
+					dobj.status = DrawObject.DRAW_UPDATE;								
+					break;
+				case DrawObject.DRAW_END:
+					dobj.status = DrawObject.DRAW_END;
+					drawStatus = DrawObject.DRAW_START;
+					break;
+			}
+			if (this.shapeStyle == DrawObject.PENCIL) {
+				dobj.status = DrawObject.DRAW_END;
+				drawStatus = DrawObject.DRAW_START;
+				presenterSegment = new Array();	
+				var xy:Array = wbCanvas.getMouseXY();
+				presenterSegment.push(xy[0], xy[1]);
+			}
+			return dobj;
+		}
+		
+		public function drawOnPresenter(dobj:DrawObject):void{
+			if (presenterSegment.length == 0) return;
+			var e:WhiteboardUpdate = new WhiteboardUpdate(WhiteboardUpdate.BOARD_UPDATED);
+			e.data = dobj;
+			dispatcher.dispatchEvent(e);
 		}
 		
 		public function doMouseDown(mouseX:Number, mouseY:Number):void{
@@ -97,13 +139,26 @@ package org.bigbluebutton.modules.whiteboard
 			segment = new Array();
 			segment.push(mouseX);
 			segment.push(mouseY);
+			
+			presenterSegment = new Array();
+			presenterSegment.push(mouseX);
+			presenterSegment.push(mouseY);
 		}
 		
 		public function doMouseMove(mouseX:Number, mouseY:Number):void{
 			if (isDrawing){
 				segment.push(mouseX);
 				segment.push(mouseY);
-				if (segment.length > 10) {
+				
+				presenterSegment.push(mouseX);
+				presenterSegment.push(mouseY);
+				
+				if (presenterSegment.length > 2) {
+					var dobj:DrawObject = createDrawObjectPresenter(drawStatus);
+					drawOnPresenter(dobj);
+				}
+				
+				if (segment.length > 30) {
 					sendShapeToServer(drawStatus);
 				}
 			}

@@ -343,9 +343,19 @@
 			 * Broadcast to other participants the location fo the mouse cursor.
 			 */
 			private function notifyOthersOfPresentersCursorPosition(cursorXPosition:int, cursorYPosition:int):void {
+				var xPercent:Number = cursorXPosition / this.width;
+				var yPercent:Number = cursorYPosition / this.height;
+				
+				//update cursor position to presenter
+				var e:CursorEvent = new CursorEvent(CursorEvent.UPDATE_CURSOR);
+				e.xPercent = xPercent;
+				e.yPercent = yPercent;
+				dispatcher.dispatchEvent(e);
+				
+				//update cursor position to viewers
 				var command:PresenterCommands = new PresenterCommands(PresenterCommands.SEND_CURSOR_UPDATE);				
-				command.xPercent = cursorXPosition / this.width;
-				command.yPercent = cursorYPosition / this.height;				
+				command.xPercent = xPercent;
+				command.yPercent = yPercent;				
 				dispatchEvent(command);
 			}
 			
