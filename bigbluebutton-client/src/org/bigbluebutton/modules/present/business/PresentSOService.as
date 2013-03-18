@@ -17,14 +17,17 @@
 * 
 */
 package org.bigbluebutton.modules.present.business {
-	import com.asfusion.mate.events.Dispatcher;	
+	import com.asfusion.mate.events.Dispatcher;
+	
 	import flash.events.AsyncErrorEvent;
 	import flash.events.NetStatusEvent;
 	import flash.events.SyncEvent;
 	import flash.net.NetConnection;
 	import flash.net.Responder;
 	import flash.net.SharedObject;
+	
 	import org.bigbluebutton.common.LogUtil;
+	import org.bigbluebutton.common.Role;
 	import org.bigbluebutton.core.managers.UserManager;
 	import org.bigbluebutton.main.events.BBBEvent;
 	import org.bigbluebutton.main.events.MadePresenterEvent;
@@ -165,10 +168,13 @@ package org.bigbluebutton.modules.present.business {
 		 * 
 		 */		
 		public function updateCursorCallback(xPercent:Number, yPercent:Number):void{
-			var e:CursorEvent = new CursorEvent(CursorEvent.UPDATE_CURSOR);
-			e.xPercent = xPercent;
-			e.yPercent = yPercent;
-			dispatcher.dispatchEvent(e);
+			var amIPresenter:Boolean = UserManager.getInstance().getConference().amIPresenter();
+			if(!amIPresenter){//if i presenter, dont update my cursor position.
+				var e:CursorEvent = new CursorEvent(CursorEvent.UPDATE_CURSOR);
+				e.xPercent = xPercent;
+				e.yPercent = yPercent;
+				dispatcher.dispatchEvent(e);
+			}
 		}
 		
 		/**

@@ -22,12 +22,12 @@ package org.bigbluebutton.modules.whiteboard.business
 	
 	import flash.events.NetStatusEvent;
 	import flash.events.SyncEvent;
-	import flash.events.TimerEvent;
 	import flash.net.NetConnection;
 	import flash.net.Responder;
 	import flash.net.SharedObject;
 	
 	import org.bigbluebutton.common.LogUtil;
+	import org.bigbluebutton.core.managers.UserManager;
 	import org.bigbluebutton.modules.present.events.PresentationEvent;
 	import org.bigbluebutton.modules.whiteboard.business.shapes.DrawObject;
 	import org.bigbluebutton.modules.whiteboard.business.shapes.DrawObjectFactory;
@@ -212,14 +212,16 @@ package org.bigbluebutton.modules.whiteboard.business
 		 * 
 		 */		
 		public function addSegment(array:Array, type:String, color:uint, thickness:uint, id:String, status:String):void{
-			LogUtil.debug("Rx add segment ****");
-			var d:DrawObject = drawFactory.makeDrawObject(type, array, color, thickness);
-			d.id = id;
-			d.status = status;
-			
-			var e:WhiteboardUpdate = new WhiteboardUpdate(WhiteboardUpdate.BOARD_UPDATED);
-			e.data = d;
-			dispatcher.dispatchEvent(e);
+			var amIPresenter:Boolean = UserManager.getInstance().getConference().amIPresenter();
+			if(!amIPresenter){//if i presenter, dont redraw for me.
+				LogUtil.debug("Rx add segment ****");
+				var d:DrawObject = drawFactory.makeDrawObject(type, array, color, thickness);
+				d.id = id;
+				d.status = status;
+				var e:WhiteboardUpdate = new WhiteboardUpdate(WhiteboardUpdate.BOARD_UPDATED);
+				e.data = d;
+				dispatcher.dispatchEvent(e);
+			}
 		}
 		
 		/**
