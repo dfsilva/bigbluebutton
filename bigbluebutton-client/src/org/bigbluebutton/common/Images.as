@@ -1,26 +1,54 @@
 /**
 * BigBlueButton open source conferencing system - http://www.bigbluebutton.org/
-*
-* Copyright (c) 2010 BigBlueButton Inc. and by respective authors (see below).
+* 
+* Copyright (c) 2012 BigBlueButton Inc. and by respective authors (see below).
 *
 * This program is free software; you can redistribute it and/or modify it under the
 * terms of the GNU Lesser General Public License as published by the Free Software
-* Foundation; either version 2.1 of the License, or (at your option) any later
+* Foundation; either version 3.0 of the License, or (at your option) any later
 * version.
-*
+* 
 * BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
 * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 *
 * You should have received a copy of the GNU Lesser General Public License along
 * with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
-* 
+*
 */
 package org.bigbluebutton.common
 {
 	[Bindable]
 	public class Images
 	{
+	
+	[Embed(source="assets/images/users_settings.png")]
+	public var users_settings:Class;
+	
+	[Embed(source="assets/images/eject_user.png")]
+	public var eject_user_new:Class;
+	
+	[Embed(source="assets/images/audio_muted.png")]
+	public var audio_muted:Class;
+	
+	[Embed(source="assets/images/audio.png")]
+	public var audio:Class;
+	
+	[Embed(source="assets/images/webcam_new.png")]
+	public var webcam_new:Class;
+	
+	[Embed(source="assets/images/sound_new.png")]
+	public var sound_new:Class;
+	
+	[Embed(source="assets/images/hand_new.png")]
+	public var hand_new:Class;
+	
+	[Embed(source="assets/images/moderator.png")]
+	public var moderator:Class;
+	
+	[Embed(source="assets/images/presenter_new.png")]
+	public var presenter_new:Class;
+	
     [Embed(source="assets/images/webcam_kickuser.png")]
     public var webcam_kickuser:Class;
     
@@ -220,7 +248,9 @@ package org.bigbluebutton.common
 		public var arrow_in:Class;
 		
 		[Embed(source="assets/images/shape_handles.png")]
-		public var shape_handles:Class;		
+		public var shape_handles:Class;
+	[Embed(source="assets/images/poll_icon.png")]
+	public var pollIcon:Class;		
 
 		[Embed(source="assets/images/disk.png")]
 		public var disk:Class;		

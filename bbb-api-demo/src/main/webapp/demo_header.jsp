@@ -1,28 +1,21 @@
- <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#"><img alt="" src="<%=request.getContextPath()%>/assets/img/virtools_25_68.png"></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="demo1.jsp">Entrar</a></li>
-              <li><a href="demo2.jsp">Selecionar e entrar</a></li>
-              <li><a href="demo3.jsp">Entrar com senha</a></li>
-              <li><a href="demo7.jsp">Entrar e fazer upload</a></li>
-              <li><a href="demo8.jsp">Entrar e fazer upload (URL)</a></li>
-              <li><a href="demo10.jsp">Gravar</a></li>
-              <li><a href="demo6.jsp">Gravar(Matterhorn)</a></li>
-              <li><a href="create.jsp">Criar</a></li>
-              <li><a href="demo4.jsp">Monitirar</a></li>
-              <li><a href="demo_mozilla_persona.jsp">Entrar com Persona</a></li>
-			  <li><a href="demo_openid.jsp">Entrar com OpenId</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<img src="images/bbb_banner.jpg" /><br> 
+<a href="demo1.jsp">Join</a> |
+<a href="demo2.jsp">Join Selected</a> | 
+<a href="demo3.jsp">Join Password</a> &nbsp;&nbsp;&nbsp;
+
+<a href="demo7.jsp">Join & Upload</a> |
+<a href="demo8.jsp">Join & Upload</a> (URL) &nbsp;&nbsp;&nbsp;
+
+<a href="demo10.jsp">Record</a> | 
+<a href="demo6.jsp">Record</a> (Matterhorn) &nbsp;&nbsp;&nbsp;
+
+<a href="create.jsp">Create</a> &nbsp;&nbsp;&nbsp;
+
+<a href="demo4.jsp">Activity Monitor</a> &nbsp;&nbsp;&nbsp;
+
+<a href="demo_mozilla_persona.jsp">Login with Persona</a> &nbsp;&nbsp;&nbsp;
+
+<a href="demo_openid.jsp">Login with Openid</a> &nbsp;&nbsp;&nbsp;
+
+<a href="demo11.jsp">Javascript API</a> &nbsp;&nbsp;&nbsp;
  

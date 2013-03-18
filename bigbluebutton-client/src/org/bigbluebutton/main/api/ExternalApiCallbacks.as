@@ -1,3 +1,21 @@
+/**
+ * BigBlueButton open source conferencing system - http://www.bigbluebutton.org/
+ * 
+ * Copyright (c) 2012 BigBlueButton Inc. and by respective authors (see below).
+ *
+ * This program is free software; you can redistribute it and/or modify it under the
+ * terms of the GNU Lesser General Public License as published by the Free Software
+ * Foundation; either version 3.0 of the License, or (at your option) any later
+ * version.
+ * 
+ * BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License along
+ * with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package org.bigbluebutton.main.api
 {
   import com.asfusion.mate.events.Dispatcher;
@@ -14,6 +32,7 @@ package org.bigbluebutton.main.api
   import org.bigbluebutton.core.events.CoreEvent;
   import org.bigbluebutton.core.events.GetMyUserInfoRequestEvent;
   import org.bigbluebutton.core.events.IsUserPublishingCamRequest;
+  import org.bigbluebutton.core.events.VoiceConfEvent;
   import org.bigbluebutton.core.managers.UserManager;
   import org.bigbluebutton.core.vo.CameraSettingsVO;
   import org.bigbluebutton.main.events.BBBEvent;
@@ -38,6 +57,7 @@ package org.bigbluebutton.main.api
         ExternalInterface.addCallback("switchPresenterRequest", handleSwitchPresenterRequest);
         ExternalInterface.addCallback("getMyUserInfoSync", handleGetMyUserInfoSynch);
         ExternalInterface.addCallback("getMyUserInfoAsync", handleGetMyUserInfoAsynch);
+        ExternalInterface.addCallback("getPresenterUserID", handleGetPresenterUserID);
         ExternalInterface.addCallback("getMyUserID", handleGetMyUserID);
         ExternalInterface.addCallback("getExternalMeetingID", handleGetExternalMeetingID);
         ExternalInterface.addCallback("joinVoiceRequest", handleJoinVoiceRequest);
@@ -61,6 +81,12 @@ package org.bigbluebutton.main.api
         ExternalInterface.addCallback("sendPrivateChatRequest", handleSendPrivateChatRequest); 
         ExternalInterface.addCallback("lockLayout", handleSendLockLayoutRequest);
       }
+      
+      // Tell out JS counterpart that we are ready.
+      if (ExternalInterface.available) {
+        ExternalInterface.call("BBB.swfClientIsReady");
+      }  
+      
     }
 
     private function handleIsUserPublishingCamRequestAsync(userID:String):void {
@@ -102,6 +128,9 @@ package org.bigbluebutton.main.api
       obj.myAvatarURL = UsersUtil.getAvatarURL();
       obj.myRole = UsersUtil.getMyRole();
       obj.amIPresenter = UsersUtil.amIPresenter();
+	  obj.dialNumber = UsersUtil.getDialNumber();
+	  obj.voiceBridge = UsersUtil.getVoiceBridge();
+	  obj.customdata = UsersUtil.getCustomData();
       
       return obj;
     }
@@ -153,6 +182,15 @@ package org.bigbluebutton.main.api
     
     private function handleGetMyUserID():String {
       return UsersUtil.internalUserIDToExternalUserID(UsersUtil.getMyUserID());
+    }
+    
+    private function handleGetPresenterUserID():String {
+      var presUserID:String = UsersUtil.getPresenterUserID();
+      if (presUserID != "") {
+        return UsersUtil.internalUserIDToExternalUserID(presUserID);
+      }
+      // return an empty string. Meeting has no presenter.
+      return "";
     }
     
     private function handleGetExternalMeetingID():String {
@@ -247,22 +285,22 @@ package org.bigbluebutton.main.api
     }
     
     private function handleMuteAllUsersRequest():void {
-      _dispatcher.dispatchEvent(new ListenersCommand(ListenersCommand.MUTE_ALL));
+      _dispatcher.dispatchEvent(new VoiceConfEvent(VoiceConfEvent.MUTE_ALL));
     }
     
     private function handleUnmuteAllUsersRequest():void {
-      _dispatcher.dispatchEvent(new ListenersCommand(ListenersCommand.UNMUTE_ALL));
+      _dispatcher.dispatchEvent(new VoiceConfEvent(VoiceConfEvent.UNMUTE_ALL));
     }
     
     private function handleMuteMeRequest():void {
-      var e:ListenersCommand = new ListenersCommand(ListenersCommand.MUTE_USER);
+      var e:VoiceConfEvent = new VoiceConfEvent(VoiceConfEvent.MUTE_USER);
       e.userid = UserManager.getInstance().getConference().getMyVoiceUserId();
       e.mute = true;
       _dispatcher.dispatchEvent(e);
     }
 
     private function handleUnmuteMeRequest():void {
-      var e:ListenersCommand = new ListenersCommand(ListenersCommand.MUTE_USER);
+      var e:VoiceConfEvent = new VoiceConfEvent(VoiceConfEvent.MUTE_USER);
       e.userid = UserManager.getInstance().getConference().getMyVoiceUserId();
       e.mute = false;
       _dispatcher.dispatchEvent(e);
@@ -279,9 +317,8 @@ package org.bigbluebutton.main.api
     
     private function handleJoinVoiceRequest():void {
       trace("handleJoinVoiceRequest");
-      var joinEvent:BBBEvent = new BBBEvent("JOIN_VOICE_CONFERENCE_EVENT");
-      joinEvent.payload['useMicrophone'] = true;
-      _dispatcher.dispatchEvent(joinEvent);
+      var showMicEvent:BBBEvent = new BBBEvent("SHOW_MIC_SETTINGS");
+      _dispatcher.dispatchEvent(showMicEvent);
     }
     
     private function handleLeaveVoiceRequest():void {

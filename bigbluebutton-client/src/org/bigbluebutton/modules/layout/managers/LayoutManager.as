@@ -1,22 +1,21 @@
 /**
- * BigBlueButton open source conferencing system - http://www.bigbluebutton.org/
- *
- * Copyright (c) 2012 BigBlueButton Inc. and by respective authors (see below).
- *
- * This program is free software; you can redistribute it and/or modify it under the
- * terms of the GNU Lesser General Public License as published by the Free Software
- * Foundation; either version 2.1 of the License, or (at your option) any later
- * version.
- *
- * BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
- * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License along
- * with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
- * 
- * Author: Felipe Cecagno <felipe@mconf.org>
- */
+* BigBlueButton open source conferencing system - http://www.bigbluebutton.org/
+* 
+* Copyright (c) 2012 BigBlueButton Inc. and by respective authors (see below).
+*
+* This program is free software; you can redistribute it and/or modify it under the
+* terms of the GNU Lesser General Public License as published by the Free Software
+* Foundation; either version 3.0 of the License, or (at your option) any later
+* version.
+* 
+* BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+* WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+* PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License along
+* with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+*
+*/
 package org.bigbluebutton.modules.layout.managers
 {
   import com.asfusion.mate.events.Dispatcher; 
@@ -50,29 +49,59 @@ package org.bigbluebutton.modules.layout.managers
   import org.bigbluebutton.modules.layout.model.WindowLayout;
   import org.bigbluebutton.util.i18n.ResourceUtil;
 
-  public class LayoutManager extends EventDispatcher {
-    private var _layouts:LayoutDefinitionFile = null;
-    private var _canvas:MDICanvas = null;
-    private var _globalDispatcher:Dispatcher = new Dispatcher();
-    private var _locked:Boolean = false;
-    private var _currentLayout:LayoutDefinition = null;
-    private var _detectContainerChange:Boolean = true;
-    private var _containerDeactivated:Boolean = false;
-    private var _sendCurrentLayoutUpdateTimer:Timer = new Timer(500,1);
-    private var _applyCurrentLayoutTimer:Timer = new Timer(150,1);
-    private var _customLayoutsCount:int = 0;
-    private var _eventsToDelay:Array = new Array(MDIManagerEvent.WINDOW_RESTORE,
-                                                  MDIManagerEvent.WINDOW_MINIMIZE,
-                                                  MDIManagerEvent.WINDOW_MAXIMIZE);
-
-    public function LayoutManager() {
-      _applyCurrentLayoutTimer.addEventListener(TimerEvent.TIMER, function(e:TimerEvent):void {
-                  applyLayout(_currentLayout);
-              });
-      _sendCurrentLayoutUpdateTimer.addEventListener(TimerEvent.TIMER, function(e:TimerEvent):void {
-                  sendLayoutUpdate(updateCurrentLayout());
-              });
-    }
+	public class LayoutManager extends EventDispatcher {
+		private var _layouts:LayoutDefinitionFile = null;
+		private var _canvas:MDICanvas = null;
+		private var _globalDispatcher:Dispatcher = new Dispatcher();
+		private var _locked:Boolean = false;
+		private var _currentLayout:LayoutDefinition = null;
+		private var _detectContainerChange:Boolean = true;
+		private var _containerDeactivated:Boolean = false;
+		private var _sendCurrentLayoutUpdateTimer:Timer = new Timer(500,1);
+		private var _applyCurrentLayoutTimer:Timer = new Timer(150,1);
+		private var _delayToSendLayoutsToCombobox:Timer = new Timer(60,0);
+		private var _customLayoutsCount:int = 0;
+		private var comboboxIsInitialized:Boolean = false;
+		private var _eventsToDelay:Array = new Array(MDIManagerEvent.WINDOW_RESTORE,
+				MDIManagerEvent.WINDOW_MINIMIZE,
+				MDIManagerEvent.WINDOW_MAXIMIZE);
+		
+		
+		public function LayoutManager() {
+			_applyCurrentLayoutTimer.addEventListener(TimerEvent.TIMER, function(e:TimerEvent):void {
+				applyLayout(_currentLayout);
+			});
+			_sendCurrentLayoutUpdateTimer.addEventListener(TimerEvent.TIMER, function(e:TimerEvent):void {
+				sendLayoutUpdate(updateCurrentLayout());
+			});
+			
+			_delayToSendLayoutsToCombobox.addEventListener(TimerEvent.TIMER, function(e:TimerEvent):void {
+				checkIfCanSendLayoutToCombobox();
+			});
+		}
+		
+		
+		public function sendPopulateComboboxEvent():void {
+			LogUtil.debug("Sending layout to populate combobox");
+			var sendLayoutsLoaded:LayoutsLoadedEvent = new LayoutsLoadedEvent(LayoutsLoadedEvent.SEND_LAYOUTS_LOADED_EVENT );
+		    	sendLayoutsLoaded.layouts = _layouts;
+			_globalDispatcher.dispatchEvent(sendLayoutsLoaded);
+		}
+		
+		
+		public function initDelayTimerUntilComboboxIsInitialized():void {
+			_delayToSendLayoutsToCombobox.start();
+		}
+		
+		
+		public function checkIfCanSendLayoutToCombobox():void {
+			if(comboboxIsInitialized) {
+				if(_delayToSendLayoutsToCombobox != null) {
+					_delayToSendLayoutsToCombobox.stop();
+				}
+				sendPopulateComboboxEvent();
+			}
+		}
 		
 		public function loadServerLayouts(layoutUrl:String):void {
 			LogUtil.debug("LayoutManager: loading server layouts from " + layoutUrl);
@@ -80,14 +109,22 @@ package org.bigbluebutton.modules.layout.managers
 			loader.addEventListener(LayoutsLoadedEvent.LAYOUTS_LOADED_EVENT, function(e:LayoutsLoadedEvent):void {
 				if (e.success) {
 					_layouts = e.layouts;
+					if(comboboxIsInitialized) {
+						sendPopulateComboboxEvent();
+					}
+					else {
+						initDelayTimerUntilComboboxIsInitialized();
+					}
 					LogUtil.debug("LayoutManager: layouts loaded successfully");
-          
-          
 				} else {
 					LogUtil.error("LayoutManager: layouts not loaded (" + e.error.message + ")");
 				}
 			});
 			loader.loadFromUrl(layoutUrl);
+		}
+		
+		public function comboboxInitialized():void {
+			comboboxIsInitialized = true;
 		}
 		
 		public function saveLayoutsToFile():void {
@@ -107,13 +144,15 @@ package org.bigbluebutton.modules.layout.managers
 					/*
 					 * \TODO why do I need to create a new Event for this?
 					 */
-					var layoutsLoaded:LayoutsLoadedEvent = new LayoutsLoadedEvent();
-					layoutsLoaded.layouts = _layouts;
-					_globalDispatcher.dispatchEvent(layoutsLoaded);
+					//var layoutsLoaded:LayoutsLoadedEvent = new LayoutsLoadedEvent();
+					//layoutsLoaded.layouts = _layouts;
+					//_globalDispatcher.dispatchEvent(layoutsLoaded);
 					/*
 					 *	it will update the ComboBox label, and will go back to this class
 					 * 	to apply the default layout
 					 */
+					 
+					 sendPopulateComboboxEvent();
 					_globalDispatcher.dispatchEvent(new LayoutEvent(LayoutEvent.APPLY_DEFAULT_LAYOUT_EVENT));
 					
 					Alert.show(ResourceUtil.getInstance().getString('bbb.layout.load.complete'), "", Alert.OK, _canvas);
@@ -348,4 +387,4 @@ package org.bigbluebutton.modules.layout.managers
 				applyLayout(_currentLayout);
 		}
 	}
-}
+}
