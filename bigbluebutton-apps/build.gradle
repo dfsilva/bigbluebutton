@@ -67,7 +67,7 @@ dependencies {
 	
 	// Spring 
 	providedCompile 'org.springframework:spring-web:3.0.6.RELEASE@jar' 
-	providedCompile  'org.springframework:spring-beans:3.0.6.RELEASE@jar'
+	providedCompile 'org.springframework:spring-beans:3.0.6.RELEASE@jar'
 	providedCompile 'org.springframework:spring-context:3.0.6.RELEASE@jar'
 	providedCompile 'org.springframework:spring-core:3.0.6.RELEASE@jar'
 	
@@ -100,12 +100,12 @@ dependencies {
 	providedCompile 'commons-pool:commons-pool:1.5.6'
     
   
-   // Freeswitch ESL Client
-   compile 'org/freeswitch:fs-esl-client:0.8.2@jar'
-   compile 'org.jboss.netty:netty:3.2.1.Final@jar'
-   compile 'com.google.code.gson:gson:1.7.1'
-   providedCompile 'org.apache.commons:commons-lang3:3.0'
-   compile 'commons-lang:commons-lang:2.5'
+    // Freeswitch ESL Client
+    compile 'org/freeswitch:fs-esl-client:0.8.2@jar'
+    compile 'org.jboss.netty:netty:3.2.1.Final@jar'
+    compile 'com.google.code.gson:gson:1.7.1'
+    providedCompile 'org.apache.commons:commons-lang3:3.0'
+    compile 'commons-lang:commons-lang:2.5'
 }
 
 test {
