@@ -5,3 +5,8 @@ bigbluebutton-client/.actionScriptProperties
 bigbluebutton-client/.flexProperties
 push_to_git.py
 bigbluebutton-client/bin/**
+*.class
+bbb-video/.gradle/*
+bbb-voice/.gradle/*
+bigbluebutton-web/.settings/*
+bigbluebutton-web/target-eclipse/*
