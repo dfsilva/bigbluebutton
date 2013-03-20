@@ -33,8 +33,8 @@ package org.bigbluebutton.core.managers
 	import org.bigbluebutton.core.model.Config;
 	
 	public class ConfigManager2 extends EventDispatcher {
+		
 	    public static const CONFIG_XML:String = "client/conf/config.xml";
-	    
 		private var _config:Config = null;
 					
 		public function loadConfig():void {
