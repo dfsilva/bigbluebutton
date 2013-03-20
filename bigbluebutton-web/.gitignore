@@ -4,6 +4,7 @@ stacktrace.log
 lib
 target
 plugins/*
+target-eclipse/*
 .classpath
 .settings/
 *.class
