@@ -35,6 +35,7 @@
 	<property name="POLLING" value="PollingModule" />
 	<property name="LAYOUT" value="LayoutModule" />
 	<property name="USERS" value="UsersModule" />
+	<property name="EXAMPLE_CHAT" value="ExampleChatModule" />
 	
 	<xmlproperty file="${SRC_DIR}/conf/locales.xml" collapseAttributes="true"/>
 	
@@ -261,6 +262,10 @@
 			description="Compile deskshare, phone, video, whiteboard modules">
 	</target>
 	
+	<target name="build-example-chat" description="Compile Example Chat Module">
+	        <build-module src="${SRC_DIR}" target="${EXAMPLE_CHAT}" />
+	</target>
+	
 	<macrodef name="build-main">
 			<attribute name="target" description="Module to compile" />
 			<attribute name="flex" default="${FLEX_HOME}" description="Location of the Flex install." />
@@ -473,7 +478,8 @@
 	                                        build-webcam-preview-standalone, build-webcam-view-standalone, compile-bbb" 
 			description="Build BBB client skipping compiling of locales"/>	
 	<target name="clean-build-all" depends="clean, init-ant-contrib, generate-html-wrapper, compile-deskshare-standalone, 
-	                                         build-webcam-preview-standalone, build-webcam-view-standalone, compile-bbb, branding" 
+	                                         build-webcam-preview-standalone, build-webcam-view-standalone, build-example-chat, 
+											 compile-bbb, branding" 
 			description="Build BBB client including locales"/>
 	<target name="modules" depends="init-ant-contrib, generate-html-wrapper, compile-deskshare-standalone, 
 	                                         build-webcam-preview-standalone, build-webcam-view-standalone, compile-bbb"
@@ -481,4 +487,6 @@
 	<target name="cleanandmake" depends="clean-build-all" description="Build BBB client including locales"/>
 
 	<target name="build-poll" depends="init-ant-contrib, build-polling" description="Build only the polling module." />
+	
+	<target name="build-custom-chat" depends="init-ant-contrib, build-example-chat" description="Build the ExampleChatModule only to reduce build time" />
 </project>
