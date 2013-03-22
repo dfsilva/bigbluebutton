@@ -18,11 +18,10 @@ package org.freeswitch.esl.client.inbound;
 import java.util.Map.Entry;
 
 import org.freeswitch.esl.client.IEslEventListener;
-import org.freeswitch.esl.client.inbound.Client;
-import org.freeswitch.esl.client.inbound.InboundConnectionFailure;
 import org.freeswitch.esl.client.transport.event.EslEvent;
-import org.freeswitch.esl.client.transport.message.EslMessage;
 import org.freeswitch.esl.client.transport.message.EslHeaders.Name;
+import org.freeswitch.esl.client.transport.message.EslMessage;
+import org.jboss.netty.channel.ExceptionEvent;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,6 +85,12 @@ public class ClientTest
             public void exceptionCaught(ExceptionEvent e) {
                 log.info( "exception received [{}]", e );
             }
+			@Override
+			public void conferenceEventRecord(String uniqueId, String confName,
+					int confSize, EslEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
 
             
         } );
