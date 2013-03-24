@@ -8,7 +8,7 @@
 
 //servidor pablo
 String salt = "7fee9abdaa08bfab39fc27a2843bb9de";
-
+ 
 // This is the URL for the BigBlueButton server
 
 //String BigBlueButtonURL = "http://192.168.1.22/bigbluebutton/";

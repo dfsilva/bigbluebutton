@@ -4,12 +4,23 @@ apply plugin: 'java'
 version = '0.8.2'
 jar.enabled = true
 
-def appName = 'fs-esl-client'
+def appName = 'fs-esl-client-example'
 
 archivesBaseName = appName 
 
 artifacts {
     archives jar
+}
+
+sourceSets {
+    	main {
+        	java {
+            	srcDir 'src/java'
+        	}
+        	resources {
+            	srcDir 'src/resources'
+        	}
+        }
 }
 
 repositories {
@@ -45,13 +56,13 @@ repositories {
 dependencies {
 
     // Logging
-    compile ':slf4j-api:1.6.1@jar'
-    compile ':logback-core:0.9.18@jar'
-    compile ':logback-classic:0.9.18@jar'
-    compile ':jcl-over-slf4j:1.5.10@jar'
-    compile ':log4j-over-slf4j:1.5.10@jar'
-    testRuntime 'junit:junit:4.8.1.@jar'
-    compile 'org.jboss.netty:netty:3.2.1.Final@jar'
+    compile 'org.slf4j:slf4j-api:1.6.1'
+    compile 'ch.qos.logback:logback-core:0.9.1'
+    compile 'ch.qos.logback:logback-classic:0.9.18'
+    compile 'org.slf4j:jcl-over-slf4j:1.5.10'
+    compile 'org.slf4j:log4j-over-slf4j:1.5.10'
+    testRuntime 'junit:junit:4.8.1'
+    compile 'org.jboss.netty:netty:3.2.1.Final'
 }
 
 
@@ -61,9 +72,9 @@ uploadArchives {
         add project.repositories.fileRepo
     }
 }
-
+/*
 task resolveDeps(dependsOn: configurations.default.buildArtifacts, type: Copy) {
     into('lib')
     from configurations.default
     from configurations.default.allArtifacts*.file
-}
+}*/

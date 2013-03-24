@@ -48,7 +48,6 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 				if (_attributes.mode == "PLAYBACK") {										
 					return _attributes.uri + "/" + _attributes.playbackRoom;
 				} 
-				
 				return _attributes.uri + "/" + _attributes.room;
 			}
 			
@@ -85,7 +84,6 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 				var event:OpenWindowEvent = new OpenWindowEvent(OpenWindowEvent.OPEN_WINDOW_EVENT);
 				event.window = window;
 				globalDispatcher.dispatchEvent(event);
-				
 			}
 			
 			public function stop():void {

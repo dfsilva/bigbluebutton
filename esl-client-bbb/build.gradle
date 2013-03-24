@@ -45,13 +45,13 @@ repositories {
 dependencies {
 
     // Logging
-    compile ':slf4j-api:1.6.1@jar'
-    compile ':logback-core:0.9.18@jar'
-    compile ':logback-classic:0.9.18@jar'
-    compile ':jcl-over-slf4j:1.5.10@jar'
-    compile ':log4j-over-slf4j:1.5.10@jar'
-    testRuntime 'junit:junit:4.8.1.@jar'
-    compile 'org.jboss.netty:netty:3.2.1.Final@jar'
+    compile 'org.slf4j:slf4j-api:1.6.1'
+    compile 'ch.qos.logback:logback-core:0.9.1'
+    compile 'ch.qos.logback:logback-classic:0.9.18'
+    compile 'org.slf4j:jcl-over-slf4j:1.5.10'
+    compile 'org.slf4j:log4j-over-slf4j:1.5.10'
+    testRuntime 'junit:junit:4.8.1'
+    compile 'org.jboss.netty:netty:3.2.1.Final'
 }
 
 
