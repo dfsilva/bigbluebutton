@@ -124,7 +124,7 @@ war.doLast {
 
 
 task deploy() << {
-	def red5AppsDir = '/usr/share/red5/webapps'
+	def red5AppsDir = '/opt/red5-1.0.0/webapps'
 	def bbbDir = new File("${red5AppsDir}/$appName")
 	println "Deleting $bbbDir"
 	ant.delete(dir: bbbDir)

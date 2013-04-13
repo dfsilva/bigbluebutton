@@ -45,14 +45,14 @@ repositories {
 
 dependencies {
     // GROOVY
-    groovy 'org.codehaus.groovy:groovy-all:1.6.4@jar'
+    groovy 'org.codehaus.groovy:groovy-all:1.6.4'
 
     // Logging
-    compile ':slf4j-api:1.5.10@jar'
-    compile ':logback-core:0.9.18@jar'
-    compile ':logback-classic:0.9.18@jar'
-    compile ':jcl-over-slf4j:1.5.10@jar'
-    compile ':log4j-over-slf4j:1.5.10@jar'
+    compile 'org.slf4j:slf4j-api:1.5.10'
+    compile 'ch.qos.logback:logback-core:0.9.18'
+    compile 'ch.qos.logback:logback-classic:0.9.18'
+    compile 'org.slf4j:jcl-over-slf4j:1.5.10'
+    compile 'org.slf4j:log4j-over-slf4j:1.5.10'
 
     // Java Concurrency In Practice
     compile 'net.jcip:jcip-annotations:1.0@jar'
