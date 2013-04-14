@@ -6,12 +6,13 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <title>Gravar uma Reuniao de Demonstracao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!-- Le styles -->
     <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
@@ -31,11 +32,44 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
+    <link rel="stylesheet" type="text/css" href="css/ui.jqgrid.css" />
+    <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-redmond.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script src="js/grid.locale-en.js" type="text/javascript"></script>
+    <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="js/jquery.xml2json.js" type="text/javascript"></script>
+
     <style type="text/css">
+	 #formcreate{
+		margin-bottom:30px;
+	 }
+	 #formcreate label.labform{
+	 	display:block;
+	 	float:left;
+	 	width:100px;
+	 	text-align:right;
+		margin-right:5px;
+	 }
+	 #formcreate div{
+		margin-bottom:5px;
+		clear:both;
+	 }
+	 #formcreate .submit{
+		margin-left:100px;
+		margin-top:15px;
+	 }
+	 #descript{
+	 	vertical-align:top;
+	 }
+	 #meta_description , #username1{
+		float:left;
+	 }
 	 .ui-jqgrid{
 		font-size:0.7em
-	}
-	</style>
+	 }
+     </style>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico">
@@ -44,8 +78,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
     <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/logo_icone.png">
     
-    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
+        <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.validate.min.js"></script>
 	<script src="<%=request.getContextPath()%>/js/grid.locale-en.js" type="text/javascript"></script>
 	<script src="<%=request.getContextPath()%>/js/jquery.jqGrid.min.js" type="text/javascript"></script>
