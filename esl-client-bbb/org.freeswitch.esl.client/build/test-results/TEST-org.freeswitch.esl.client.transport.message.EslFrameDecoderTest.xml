@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="0" hostname="avell" name="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" tests="3" time="0.031" timestamp="2013-03-22T01:48:53">
-  <properties />
-  <testcase classname="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" name="simpleMessage" time="0.014" />
-  <testcase classname="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" name="simpleMessageWithContent" time="0.001" />
-  <testcase classname="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" name="eventWithSecondContentLength" time="0.001" />
+<?xml version="1.1" encoding="UTF-8"?>
+<testsuite name="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" tests="3" failures="0" errors="0" timestamp="2013-04-14T16:33:18" hostname="avell" time="0.015">
+  <properties/>
+  <testcase name="simpleMessage" classname="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" time="0.012"/>
+  <testcase name="simpleMessageWithContent" classname="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" time="0.001"/>
+  <testcase name="eventWithSecondContentLength" classname="org.freeswitch.esl.client.transport.message.EslFrameDecoderTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

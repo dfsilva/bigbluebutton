@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="0" hostname="avell" name="org.freeswitch.esl.client.inbound.ClientTest" tests="3" time="6.256" timestamp="2013-03-22T01:48:47">
-  <properties />
-  <testcase classname="org.freeswitch.esl.client.inbound.ClientTest" name="do_multi_connects" time="2.235" />
-  <testcase classname="org.freeswitch.esl.client.inbound.ClientTest" name="sofia_contact" time="2.006" />
-  <testcase classname="org.freeswitch.esl.client.inbound.ClientTest" name="do_connect" time="2.008" />
+<?xml version="1.1" encoding="UTF-8"?>
+<testsuite name="org.freeswitch.esl.client.inbound.ClientTest" tests="3" failures="0" errors="0" timestamp="2013-04-14T16:33:12" hostname="avell" time="6.23">
+  <properties/>
+  <testcase name="sofia_contact" classname="org.freeswitch.esl.client.inbound.ClientTest" time="2.219"/>
+  <testcase name="do_multi_connects" classname="org.freeswitch.esl.client.inbound.ClientTest" time="2.005"/>
+  <testcase name="do_connect" classname="org.freeswitch.esl.client.inbound.ClientTest" time="2.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

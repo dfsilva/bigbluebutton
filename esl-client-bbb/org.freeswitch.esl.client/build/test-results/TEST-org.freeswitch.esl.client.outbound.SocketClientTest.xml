@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="1" hostname="avell" name="org.freeswitch.esl.client.outbound.SocketClientTest" tests="1" time="0.079" timestamp="2013-03-22T01:48:47">
-  <properties />
-  <testcase classname="org.freeswitch.esl.client.outbound.SocketClientTest" name="run_client" time="0.014">
+<?xml version="1.1" encoding="UTF-8"?>
+<testsuite name="org.freeswitch.esl.client.outbound.SocketClientTest" tests="1" failures="1" errors="0" timestamp="2013-04-14T16:33:12" hostname="avell" time="0.016">
+  <properties/>
+  <testcase name="run_client" classname="org.freeswitch.esl.client.outbound.SocketClientTest" time="0.016">
     <failure message="java.lang.NoSuchMethodError: ch.qos.logback.classic.LoggerContext.getCopyOfPropertyMap()Ljava/util/Map;" type="java.lang.NoSuchMethodError">java.lang.NoSuchMethodError: ch.qos.logback.classic.LoggerContext.getCopyOfPropertyMap()Ljava/util/Map;
 	at ch.qos.logback.classic.spi.LoggerContextVO.&lt;init&gt;(LoggerContextVO.java:46)
 	at ch.qos.logback.classic.LoggerContext.&lt;init&gt;(LoggerContext.java:75)
@@ -12,15 +12,16 @@
 	at org.slf4j.LoggerFactory.getILoggerFactory(LoggerFactory.java:268)
 	at org.slf4j.LoggerFactory.getLogger(LoggerFactory.java:241)
 	at org.slf4j.LoggerFactory.getLogger(LoggerFactory.java:254)
-	at org.freeswitch.esl.client.outbound.SocketClientTest.&lt;init&gt;(SocketClientTest.java:43)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:202)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.runReflectiveCall(BlockJUnit4ClassRunner.java:251)
+	at org.freeswitch.esl.client.outbound.SocketClient.&lt;init&gt;(SocketClient.java:45)
+	at org.freeswitch.esl.client.outbound.SocketClientTest.run_client(SocketClientTest.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.BlockJUnit4ClassRunner.methodBlock(BlockJUnit4ClassRunner.java:248)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
@@ -31,7 +32,7 @@
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
 	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:55)
 	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:42)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:75)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:71)
 	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -49,17 +50,7 @@
 	at java.lang.reflect.Method.invoke(Method.java:601)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.messaging.remote.internal.TypeCastDispatch.dispatch(TypeCastDispatch.java:30)
-	at org.gradle.messaging.remote.internal.WorkerProtocol.handleIncoming(WorkerProtocol.java:53)
-	at org.gradle.messaging.remote.internal.WorkerProtocol.handleIncoming(WorkerProtocol.java:31)
-	at org.gradle.messaging.remote.internal.ProtocolStack$ProtocolStage.handleIncoming(ProtocolStack.java:167)
-	at org.gradle.messaging.remote.internal.ProtocolStack$BottomStage.handleIncoming(ProtocolStack.java:277)
-	at org.gradle.messaging.remote.internal.ProtocolStack$BottomConnection$1.run(ProtocolStack.java:299)
-	at org.gradle.messaging.remote.internal.ProtocolStack$ExecuteRunnable.dispatch(ProtocolStack.java:120)
-	at org.gradle.messaging.remote.internal.ProtocolStack$ExecuteRunnable.dispatch(ProtocolStack.java:116)
-	at org.gradle.messaging.dispatch.AsyncDispatch.dispatchMessages(AsyncDispatch.java:132)
-	at org.gradle.messaging.dispatch.AsyncDispatch.access$000(AsyncDispatch.java:33)
-	at org.gradle.messaging.dispatch.AsyncDispatch$1.run(AsyncDispatch.java:72)
+	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:355)
 	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:66)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
