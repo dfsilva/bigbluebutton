@@ -111,7 +111,8 @@ public class ConnectionInvokerService {
 				List<Object> params = new ArrayList<Object>();
 				params.add(message.getMessageName());
 				params.add(message.getMessage());
-				ServiceUtils.invokeOnAllScopeConnections(scope, "onMessageFromServer", params.toArray(), null);				
+				System.out.println("=============================vou chamar o metodo que nao existeeeeeeeeeeeeeeeeeeeeee=========================================== ");
+				ServiceUtils.invokeOnAllConnections(scope, "onMessageFromServer", params.toArray(), null);	
 			}
 		} else if (message.getType().equals(ClientMessage.DIRECT)) {
 			IConnection conn = connections.get(message.getDest());
