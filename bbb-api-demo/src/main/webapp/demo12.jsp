@@ -63,7 +63,7 @@ Author: Jesus Federico <jesus@123it.ca>
 
 <%
 	if (request.getParameterMap().isEmpty()) {
-	    //
+	//
         // Assume we want to create a meeting
         //
 %>
@@ -71,9 +71,8 @@ Author: Jesus Federico <jesus@123it.ca>
 
     <form id="formcreate" name="formcreate" method="get" action=""> 
         <fieldset>
-            <legend>Meeting Information</legend>
+            <legend>Demo Meeting</legend>
             <ul>
-                <li><h3>Demo meeting</h3></li>
                 <li>
                     <label for="username1">Your Name:</label>
                     <input id="username1" required name="username1" type="text" />	
@@ -82,7 +81,7 @@ Author: Jesus Federico <jesus@123it.ca>
         </fieldset>
 
         <fieldset>
-            <legend>Options</legend>
+            <legend>config.xml (client configuration)</legend>
 
 		<label for="skin">Skin:</label>
 			<select id="skin" name="Skin">
@@ -94,18 +93,9 @@ Author: Jesus Federico <jesus@123it.ca>
 		<label for="layout" >Layout:</label>
 	                <select id="layout" name="Layout">
         	            <option value="Default" selected="selected">Default</option>
-                	    <option value="VideoChat">Video Chat</option>
+                	    <option value="Video Chat">Video Chat</option>
 	                    <option value="Meeting">Meeting</option>
-			    <option value="LectureAssistant">Lecture assistant</option>
-	    		<!--
-	 	            <option value="Users">Users</option>
-       		            <option value="Webinar">Webinar</option>
-	                    <option value="Lecture">Lecture</option>
-	                    <option value="S2SPresentation">S2SPresentation</option>
-	                    <option value="S2SVideoChat">S2SVideoChat</option>
-	                    <option value="Notes">Notes</option>
-	                    <option value="Broadcast">Broadcast</option>
-			-->
+			    <option value="Webinar">Webinar</option>
 	                </select><br><br>
 
 		<label for="videomodule">Auto start webcam:</label>
@@ -150,11 +140,11 @@ Author: Jesus Federico <jesus@123it.ca>
 
 	Document doc = null;
 	try {
-        	doc = parseXml( getURL( "http://"+ getBigBlueButtonIP() + "/client/conf/config.xml" ));
+        	 doc = parseXml( getURL( "http://"+ getBigBlueButtonIP() + "/client/conf/config.xml" ));
+        	 // doc = parseXml( getDefaultConfigXML() );
 	} catch (Exception e) {
         	e.printStackTrace();
         }
-
 
 	// Get request parameters to edit config.xml
 

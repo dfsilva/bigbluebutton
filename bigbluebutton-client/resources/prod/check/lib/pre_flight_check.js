@@ -41,3 +41,15 @@ var bbbCheckStopTestMic = function() {
 var bbbCheckShowCamSettings = function() {
   BBBCheck.showCamSettings();
 }
+
+var bbbCheckTestRTMPConnection = function(host, app) {
+  BBBCheck.testRTMPConnection(host, app);
+}
+
+var bbbCheckTestSocketConnection = function(host, port) {
+  BBBCheck.testSocketConnection(host, port);
+}
+
+var bbbCheckSetSocketPolicyFileURL = function(url) {
+  BBBCheck.setSocketPolicyFileURL(url);
+}

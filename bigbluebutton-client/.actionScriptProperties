@@ -40,6 +40,7 @@
     <application path="org/red5/flash/bwcheck/app/BandwidthDetectionApp.as"/>
     <application path="CameraCheck.mxml"/>
     <application path="MicrophoneCheck.mxml"/>
+    <application path="RTMPConnCheck.mxml"/>
   </applications>
   <modules>
     <module application="src/BigBlueButton.mxml" destPath="DynamicInfoModule.swf" optimize="true" sourcePath="src/DynamicInfoModule.mxml"/>
