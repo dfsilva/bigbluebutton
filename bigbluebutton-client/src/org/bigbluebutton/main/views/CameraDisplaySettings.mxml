@@ -64,6 +64,11 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 		private var _video:Video;
 		private var aspectRatio:Number = 1;
 		
+    override public function move(x:Number, y:Number):void
+    {
+       return;
+    }
+      
 		private function onCreationComplete():void {          
 			changeDefaultCamForMac();
 			
@@ -204,6 +209,10 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 			camEvent.payload.publishInClient = publishInClient;
 			
 			globalDispatcher.dispatchEvent(camEvent);
+			
+			var event:BBBEvent = new BBBEvent(BBBEvent.CAM_SETTINGS_CLOSED);
+			event.payload['clicked'] = "close";
+			dispatchEvent(event);
 			
 			PopUpManager.removePopUp(this);
 		}

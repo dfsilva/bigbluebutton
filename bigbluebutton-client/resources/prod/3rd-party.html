@@ -22,7 +22,7 @@
     <script type="text/javascript" src="http://192.168.0.249/client/lib/bbb_api_bridge.js"></script>
     <script type="text/javascript" src="http://192.168.0.249/client/lib/bbb_api_cam_preview.js"></script>
     <script type="text/javascript" src="http://192.168.0.249/client/lib/bbb_api_cam_view.js"></script>
-    <script type="text/javascript" src="http://192.168.0.235/3rd-party.js"></script>
+    <script type="text/javascript" src="http://192.168.0.249/3rd-party.js"></script>
     <script>
       window.chatLinkClicked = function(url) {
         window.open(url, '_blank');
@@ -72,6 +72,10 @@
       <button type="button" onclick="amIPresenterAsync()">Am I Presenter Async</button>
 	  <button type="button" onclick="getMyUserInfoAsynch()">User Info Async</button>
       <button type="button" onclick="getMyUserInfoSynch()">UserInfo Sync</button>
+      <form id="formUpload" name="formUpload" enctype="multipart/form-data">
+        <input type="file" name="fileUpload" id="fileUpload" />
+        <button type="button" onclick="uploadPresentation()">Upload Presentation</button>
+      </form>
     </div>
     <div id="webcampreview" style="background-color:#FFD700;height:240px;width:320px;float:left;">
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540001" width="320" height="240" id="WebcamPreviewStandalone" name="WebcamPreviewStandalone" align="middle">
