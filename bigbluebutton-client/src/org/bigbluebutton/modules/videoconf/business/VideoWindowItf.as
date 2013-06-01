@@ -63,9 +63,7 @@ package org.bigbluebutton.modules.videoconf.business
 		protected var _minHeight:int = 120 + PADDING_VERTICAL;
 		protected var aspectRatio:Number = 1;
 		protected var keepAspect:Boolean = false;
-//		protected var originalWidth:Number;
-//		protected var originalHeight:Number;
-		
+	
 		protected var mousePositionOnDragStart:Point;
 		
 		public var streamName:String;
@@ -84,8 +82,8 @@ package org.bigbluebutton.modules.videoconf.business
       return windowType;
     }
     
-    protected function switchRole(presenter:Boolean):void {
-      _controlButtons.handleNewRoleEvent(presenter);
+    protected function updateControlButtons():void {
+      _controlButtons.updateControlButtons();
     }
     
 		protected function getVideoResolution(stream:String):Array {
@@ -213,6 +211,8 @@ package org.bigbluebutton.modules.videoconf.business
 		}
 			
 		override public function close(event:MouseEvent = null):void{
+      trace("VideoWIndowItf close window event");
+      
 			var e:CloseWindowEvent = new CloseWindowEvent();
 			e.window = this;
 			dispatchEvent(e);
@@ -256,8 +256,8 @@ package org.bigbluebutton.modules.videoconf.business
 			if (controlButtons.visible == false) {
 				controlButtons.y = controlButtons.x = 0;
 			} else {
-				controlButtons.y = _video.y + _video.height - controlButtons.height - controlButtons.padding;
-				controlButtons.x = _video.x + _video.width - controlButtons.width - controlButtons.padding;
+				controlButtons.y = this.height - PADDING_VERTICAL - controlButtons.height - controlButtons.padding;
+				controlButtons.x = this.width - PADDING_HORIZONTAL - controlButtons.width - controlButtons.padding;
 			}
 		}
 		

@@ -62,6 +62,8 @@
       <button type="button" onclick="unmuteMe()">Unmute Me</button>
       <button type="button" onclick="muteAll()">Mute All</button>
       <button type="button" onclick="unmuteAll()">Unmute All</button>
+      <button type="button" onclick="raiseHand(true)">Raise Hand</button>
+      <button type="button" onclick="raiseHand(false)">Lower Hand</button>
       <button type="button" onclick="switchLayout('S2SVideoChat')">Switch Video Layout</button>
       <button type="button" onclick="switchLayout('S2SPresentation')">Switch Present Layout</button>
       <button type="button" onclick="lockLayout(true)">Lock Layout</button>
@@ -78,7 +80,7 @@
       </form>
     </div>
     <div id="webcampreview" style="background-color:#FFD700;height:240px;width:320px;float:left;">
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540001" width="320" height="240" id="WebcamPreviewStandalone" name="WebcamPreviewStandalone" align="middle">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540001" width="100%" height="100%" id="WebcamPreviewStandalone" name="WebcamPreviewStandalone" align="middle">
           <param name="movie" value="http://192.168.0.249/client/WebcamPreviewStandalone.swf?v=VERSION" />
           <param name="quality" value="high" />
           <param name="allowfullscreen" value="true" />
@@ -86,7 +88,7 @@
           <param name="wmode" value="window" />
           <param name="allowScriptAccess" value="always" />
           <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="http://192.168.0.249/client/WebcamPreviewStandalone.swf?v=VERSION" width="100%" height="90%" align="middle">
+            <object type="application/x-shockwave-flash" data="http://192.168.0.249/client/WebcamPreviewStandalone.swf?v=VERSION" width="100%" height="100%" align="middle">
               <param name="quality" value="high" />
               <param name="bgcolor" value="#869ca7" />
               <param name="allowScriptAccess" value="always" />
@@ -100,7 +102,7 @@
         </object>
      </div>
     <div id="webcamview" style="background-color:#FFD700;height:240px;width:320px;float:left;">
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540002" width="320" height="240" id="WebcamViewStandalone" name="WebcamViewStandalone" align="middle">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540002" width="100%" height="100%" id="WebcamViewStandalone" name="WebcamViewStandalone" align="middle">
           <param name="movie" value="http://192.168.0.249/client/WebcamViewStandalone.swf?v=VERSION" />
           <param name="quality" value="high" />
           <param name="allowfullscreen" value="true" />
@@ -108,7 +110,7 @@
           <param name="wmode" value="window" />
           <param name="allowScriptAccess" value="always" />
           <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="http://192.168.0.249/client/WebcamViewStandalone.swf?v=VERSION" width="100%" height="90%" align="middle">
+            <object type="application/x-shockwave-flash" data="http://192.168.0.249/client/WebcamViewStandalone.swf?v=VERSION" width="100%" height="100%" align="middle">
               <param name="quality" value="high" />
               <param name="bgcolor" value="#869ca7" />
               <param name="allowScriptAccess" value="always" />
